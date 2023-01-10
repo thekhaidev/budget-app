@@ -6,10 +6,11 @@ module.exports = {
   output: {
     path:path.resolve(__dirname, "dist"),
   },
+  watch: true,
   module: {
     rules: [
       {
-        test: /\.?js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
