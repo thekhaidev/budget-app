@@ -8,6 +8,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
   },
+  resolve: {
+    alias: {
+      "@mui/styled-engine": "@mui/styled-engine-sc",
+    },
+  },
   module: {
     rules: [
       {
