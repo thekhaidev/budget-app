@@ -5,7 +5,6 @@ import {
   Box,
 } from '@mui/material';
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   useNavigate,

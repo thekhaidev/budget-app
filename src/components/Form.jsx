@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import {
   Box,
@@ -6,12 +6,25 @@ import {
   TextField,
   Button,
 } from '@mui/material';
+import {
+  useNavigate,
+} from 'react-router-dom';
+
 import app from '../../firebase.js';
 
 const Form = ({ title }) => {
-  const [formValue, setFormValue] = useState({ email: '', password: '' });
+  const [formValue, setFormValue] = useState({ email: null, password: null });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const authToken = sessionStorage.getItem('Auth Token');
+
+    if (authToken) {
+      navigate('/home');
+    }
+  }, []);
+
   const handleInputChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
     setFormValue({
       ...formValue,
@@ -20,13 +33,15 @@ const Form = ({ title }) => {
     console.log(formValue);
   };
 
-  const handleAction = (e, name) => {
+  const handleAction = (name) => {
     const authentication = getAuth(app);
-    e.preventDefault();
+
     if (name === 'Register') {
       createUserWithEmailAndPassword(authentication, formValue.email, formValue.password)
         .then((response) => {
           console.log(response);
+        }).catch((err) => {
+          console.log(err);
         });
     }
 
@@ -36,6 +51,7 @@ const Form = ({ title }) => {
         formValue.email,
         formValue.password,
       ).then((userCreds) => {
+        navigate('/home');
         sessionStorage.setItem('Auth Token', userCreds._tokenResponse.refreshToken);
         // console.log(userCreds._tokenResponse.refreshToken);
       }).catch((err) => {
@@ -72,7 +88,7 @@ const Form = ({ title }) => {
 
       </Box>
       <Box>
-        <Button onClick={(e) => handleAction(e, title)}>{title}</Button>
+        <Button onClick={() => handleAction(title)}>{title}</Button>
       </Box>
       <Box component="span">
         Register for account

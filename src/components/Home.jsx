@@ -2,11 +2,16 @@ import React, { useEffect } from 'react';
 import {
   Container,
   Box,
+  Button,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
+  const handleLogout = () => {
+    sessionStorage.removeItem('Auth Token');
+    navigate('/login');
+  };
   useEffect(() => {
     const authToken = sessionStorage.getItem('Auth Token');
 
@@ -25,6 +30,7 @@ const Home = () => {
         <h1>
           Hello, world
         </h1>
+        <Button onClick={() => handleLogout()}>Log Out</Button>
       </Container>
     </Box>
   );
