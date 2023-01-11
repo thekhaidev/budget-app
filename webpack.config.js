@@ -8,11 +8,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
   },
-  resolve: {
-    alias: {
-      "@mui/styled-engine": "@mui/styled-engine-sc",
-    },
-  },
   module: {
     rules: [
       {
@@ -31,12 +26,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html"),
     }),
-    ["babel-plugin-styled-components"],
-    ["module-resolver",
-    {
-      "root": ["./src"],
-      "alias": {
-        "@mui/styled-engine": "@mui/styled-engine-sc"
-      }],
   ],
 };
