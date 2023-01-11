@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
   Container,
@@ -15,6 +15,14 @@ import Form from './components/Form.jsx';
 
 const App = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const authToken = sessionStorage.getItem('Auth Token');
+
+    if (authToken) {
+      navigate('/home');
+    }
+  }, []);
 
   return (
     <Box style={{ border: '1px solid red' }}>
