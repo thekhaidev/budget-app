@@ -37,6 +37,7 @@
             "unnamedComponents":"arrow-function"
           }],
           "react/prop-types": [0],
-          "arrow-body-style": ["error", "as-needed"]
+          "arrow-body-style": ["error", "as-needed"],
+          "no-underscore-dangle": ["error", { "allow": true }]
     }
 }

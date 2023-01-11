@@ -20,8 +20,9 @@ const Form = ({ title }) => {
     console.log(formValue);
   };
 
-  const handleAction = (name) => {
+  const handleAction = (e, name) => {
     const authentication = getAuth(app);
+    e.preventDefault();
     if (name === 'Register') {
       createUserWithEmailAndPassword(authentication, formValue.email, formValue.password)
         .then((response) => {
@@ -35,7 +36,8 @@ const Form = ({ title }) => {
         formValue.email,
         formValue.password,
       ).then((userCreds) => {
-        console.log(userCreds.user);
+        sessionStorage.setItem('Auth Token', userCreds._tokenResponse.refreshToken);
+        // console.log(userCreds._tokenResponse.refreshToken);
       }).catch((err) => {
         console.log(err);
       });
@@ -70,7 +72,7 @@ const Form = ({ title }) => {
 
       </Box>
       <Box>
-        <Button onClick={() => handleAction(title)}>{title}</Button>
+        <Button onClick={(e) => handleAction(e, title)}>{title}</Button>
       </Box>
       <Box component="span">
         Register for account
