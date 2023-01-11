@@ -28,6 +28,18 @@ const Form = ({ title }) => {
           console.log(response);
         });
     }
+
+    if (name === 'Log In') {
+      signInWithEmailAndPassword(
+        authentication,
+        formValue.email,
+        formValue.password,
+      ).then((userCreds) => {
+        console.log(userCreds.user);
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
     // console.log(formValue.email);
   };
 
