@@ -1,7 +1,13 @@
 import React from "react";
 
+import Box from "@mui/material/Box";
+
 const App = () => {
-  return <h1> Hello World </h1>;
+  return (
+    <Box>
+      <h1>Hello, world</h1>
+    </Box>
+  );
 };
 
 export default App;

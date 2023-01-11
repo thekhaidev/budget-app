@@ -32,5 +32,11 @@ module.exports = {
       template: path.join(__dirname, "src", "index.html"),
     }),
     ["babel-plugin-styled-components"],
+    ["module-resolver",
+    {
+      "root": ["./src"],
+      "alias": {
+        "@mui/styled-engine": "@mui/styled-engine-sc"
+      }],
   ],
 };
