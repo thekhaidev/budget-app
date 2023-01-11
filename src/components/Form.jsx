@@ -18,8 +18,8 @@ const Form = ({ title }) => {
     console.log(formValue);
   };
 
-  const showAlert = () => {
-    alert('kekekeke');
+  const handleAction = (name) => {
+    console.log(name);
   };
 
   return (
@@ -49,7 +49,7 @@ const Form = ({ title }) => {
 
       </Box>
       <Box>
-        <Button onClick={showAlert}>{title}</Button>
+        <Button onClick={handleAction(title)}>{title}</Button>
       </Box>
       <Box component="span">
         Register for account
