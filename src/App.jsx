@@ -8,11 +8,15 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  useNavigate,
 } from 'react-router-dom';
+import Home from './components/Home.jsx';
 import Form from './components/Form.jsx';
 
-const App = () => (
-  <Router>
+const App = () => {
+  const navigate = useNavigate();
+
+  return (
     <Box style={{ border: '1px solid red' }}>
       <Container
         style={{ textAlign: 'center', border: '1px solid black' }}
@@ -22,11 +26,12 @@ const App = () => (
         <Routes>
           <Route path="/login" element={<Form title="Log In" />} />
           <Route path="/register" element={<Form title="Register" />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </Container>
 
     </Box>
-  </Router>
-);
+  );
+};
 
 export default App;

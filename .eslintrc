@@ -38,6 +38,6 @@
           }],
           "react/prop-types": [0],
           "arrow-body-style": ["error", "as-needed"],
-          "no-underscore-dangle": ["error", { "allow": true }]
+          "no-underscore-dangle": 'off'
     }
 }
