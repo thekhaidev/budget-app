@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack serve --mode=development",
+    "start": "nodemon server/index.js",
     "build": "webpack"
   },
   "repository": {
@@ -45,8 +46,14 @@
     "@mui/material": "^5.11.4",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "@mui/styled-engine-sc": "^5.11.0",
+    "axios": "^1.2.2",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "dotenv-webpack": "^8.0.1",
+    "express": "^4.18.2",
     "firebase": "^9.15.0",
+    "nodemon": "^2.0.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.2",

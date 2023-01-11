@@ -37,6 +37,6 @@
             "unnamedComponents":"arrow-function"
           }],
           "react/prop-types": [0],
-          "arrow-body-style": ["error", "always"]
+          "arrow-body-style": ["error", "as-needed"]
     }
 }
