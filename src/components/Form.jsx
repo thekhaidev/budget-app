@@ -13,7 +13,7 @@ import {
 import app from '../../firebase.js';
 
 const Form = ({ title }) => {
-  const [formValue, setFormValue] = useState({ email: null, password: null });
+  const [formValue, setFormValue] = useState({ email: '', password: '' });
   const navigate = useNavigate();
 
   useEffect(() => {
