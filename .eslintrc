@@ -39,5 +39,6 @@
           "react/prop-types": [0],
           "arrow-body-style": ["error", "as-needed"],
           "no-underscore-dangle": 'off'
+          
     }
 }
