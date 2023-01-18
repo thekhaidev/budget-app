@@ -30,11 +30,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/test', async (req, res) => {
-  const citiesRef = db.collection('users');
-  const snapshot = await citiesRef.get();
+  const citiesRef = db.collection('users').doc('kim');
+  const snapshot = await citiesRef.listCollections();
   const users = [];
-  snapshot.forEach((doc) => {
-    users.push(doc.id, '=>', doc.data());
+  snapshot.forEach((collection) => {
+    console.log('Found subcollection with id:', collection.get());
   });
   res.send(users);
 });
