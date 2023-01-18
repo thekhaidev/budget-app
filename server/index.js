@@ -30,14 +30,24 @@ app.get('/', (req, res) => {
 });
 
 app.get('/test', async (req, res) => {
-  const docRef = db.collection('users').doc('alovelace');
-
-  await docRef.set({
-    first: 'Ada',
-    last: 'Lovelace',
-    born: 1815,
-  }).then(res.send('Check collections'));
+  const citiesRef = db.collection('users');
+  const snapshot = await citiesRef.get();
+  const users = [];
+  snapshot.forEach((doc) => {
+    users.push(doc.id, '=>', doc.data());
+  });
+  res.send(users);
 });
+
+// app.post('/test', async (req, res) => {
+//   const docRef = db.collection('users').doc('alovelace');
+
+//   await docRef.set({
+//     first: 'Ada',
+//     last: 'Lovelace',
+//     born: 1815,
+//   }).then(res.send('Collection posted'));
+// });
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
