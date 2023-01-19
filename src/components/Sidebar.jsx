@@ -1,16 +1,29 @@
 import React from 'react'; import {
-  Container,
+  Drawer,
+  Divider,
   Box,
 } from '@mui/material';
 
 const Sidebar = () => (
-  <Container style={{ border: 'black 1px solid', width: '25vw', height: '50vh' }}>
-    <Box>
-      <h2>
-        Yuh
-      </h2>
-    </Box>
-  </Container>
+
+  <Box sx={{ display: { xs: 'none' } }}>
+    <Drawer
+      PaperProps={{
+        sx: { width: '15%' },
+        boxSizing: 'border-box',
+      }}
+      variant="permanent"
+      anchor="left"
+    >
+      <h2>Incoming</h2>
+      <h2>Outgoing</h2>
+      <Divider />
+
+      <Divider />
+      <h2>Accounts</h2>
+    </Drawer>
+  </Box>
+
 );
 
 export default Sidebar;

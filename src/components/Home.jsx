@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import {
-  Container,
   Box,
   Button,
 } from '@mui/material';
@@ -27,13 +26,13 @@ const Home = () => {
 
   return (
     <Box>
-      <Container>
+      <Box component="div">
         <h1>
           Hello, world
         </h1>
         <Sidebar />
-        <Button onClick={() => handleLogout()}>Log Out</Button>
-      </Container>
+      </Box>
+      <Button onClick={() => handleLogout()}>Log Out</Button>
     </Box>
   );
 };
