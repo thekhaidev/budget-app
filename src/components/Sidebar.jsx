@@ -6,7 +6,7 @@ import React from 'react'; import {
 
 const Sidebar = () => (
 
-  <Box sx={{ display: { xs: 'none' } }}>
+  <Box sx={{ display: { xs: 'none', md: 'block' } }}>
     <Drawer
       PaperProps={{
         sx: { width: '15%' },
