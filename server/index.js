@@ -37,8 +37,14 @@ app.get('/test', async (req, res) => {
   const savings = await accounts.doc('savings').collection('transactions').get();
 
   savings.forEach((trans) => {
-    console.log(trans.id, '=>', trans.data());
+    console.log('Savings:', trans.id, '=>', trans.data());
   });
+
+  checking.forEach((trans) => {
+    console.log('Checking:', trans.id, '=>', trans.data());
+  });
+
+  console.log('User', '=>', user.data());
 
   res.send(accounts);
 });
