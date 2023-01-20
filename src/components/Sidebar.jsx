@@ -1,4 +1,4 @@
-import React from 'react'; import {
+import React, { useState } from 'react'; import {
   Drawer,
   Divider,
   Box,
@@ -7,8 +7,8 @@ import React from 'react'; import {
 } from '@mui/material';
 
 const Sidebar = () => (
-
   <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+
     <Drawer
       PaperProps={{
         sx: { width: '15%' },
@@ -19,9 +19,9 @@ const Sidebar = () => (
     >
 
       <h2>Accounts</h2>
-      <Select sx={{ width: '80%', alignSelf: 'center' }}>
-        <MenuItem>Checking</MenuItem>
-        <MenuItem>Saving</MenuItem>
+      <Select defaultValue="checking" sx={{ width: '80%', marginBottom: '5%', alignSelf: 'center' }}>
+        <MenuItem value="checking">Checking</MenuItem>
+        <MenuItem value="saving">Saving</MenuItem>
       </Select>
       <Divider />
       <h2>Incoming</h2>
@@ -33,7 +33,6 @@ const Sidebar = () => (
 
     </Drawer>
   </Box>
-
 );
 
 export default Sidebar;
