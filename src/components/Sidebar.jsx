@@ -23,7 +23,7 @@ const Sidebar = () => (
         <MenuItem value="checking">Checking</MenuItem>
         <MenuItem value="saving">Saving</MenuItem>
       </Select>
-      <Divider />
+      <Divider variant="middle" />
       <h2>Incoming</h2>
       $23,000,000
       <h2>Outgoing</h2>

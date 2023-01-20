@@ -30,24 +30,18 @@ app.get('/', (req, res) => {
 });
 
 app.get('/test', async (req, res) => {
-  const citiesRef = db.collection('users').doc('kim');
-  const snapshot = await citiesRef.listCollections();
-  const users = [];
-  snapshot.forEach((collection) => {
-    console.log('Found subcollection with id:', collection.get());
+  const userRef = db.collection('users').doc('kim');
+  const user = await userRef.get();
+  const accounts = await userRef.collection('accounts');
+  const checking = await accounts.doc('checking').collection('transactions').get();
+  const savings = await accounts.doc('savings').collection('transactions').get();
+
+  savings.forEach((trans) => {
+    console.log(trans.id, '=>', trans.data());
   });
-  res.send(users);
+
+  res.send(accounts);
 });
-
-// app.post('/test', async (req, res) => {
-//   const docRef = db.collection('users').doc('alovelace');
-
-//   await docRef.set({
-//     first: 'Ada',
-//     last: 'Lovelace',
-//     born: 1815,
-//   }).then(res.send('Collection posted'));
-// });
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
