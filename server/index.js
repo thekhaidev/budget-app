@@ -32,21 +32,36 @@ app.get('/', (req, res) => {
 app.get('/test', async (req, res) => {
   const userRef = db.collection('users').doc('kim');
   const user = await userRef.get();
-  const accounts = await userRef.collection('accounts');
+  const accounts = userRef.collection('accounts');
+  const accountList = await userRef.collection('accounts').listDocuments();
   const checking = await accounts.doc('checking').collection('transactions').get();
   const savings = await accounts.doc('savings').collection('transactions').get();
 
-  savings.forEach((trans) => {
-    console.log('Savings:', trans.id, '=>', trans.data());
-  });
+  // need to get all accounts
+  const test = accountList.reduce((acc, curr) => {
+    acc.push(curr.id);
+    return acc;
+  }, []);
+  // need to get all transactions for accounts
 
-  checking.forEach((trans) => {
-    console.log('Checking:', trans.id, '=>', trans.data());
-  });
+  const getAccountTransactions = async () => {
+    console.log('Start');
 
-  console.log('User', '=>', user.data());
+    for (let i = 0; i < test.length; i++) {
+      const currAcc = test[i];
+      const accTrans = await accounts.doc(currAcc).collection('transactions').get();
+      accTrans.forEach((acc) => {
+        console.log(acc.data());
+      });
+    }
 
-  res.send(accounts);
+    console.log('End');
+  };
+  // send back as single object/array
+
+  // console.log('User', '=>', user.data());
+  getAccountTransactions();
+  res.send(test);
 });
 
 app.listen(port, () => {
