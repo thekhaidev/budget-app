@@ -53,7 +53,7 @@
             "error",
             "as-needed"
         ],
-        "no-underscore-dangle": 'off',
-        "allowForLoopAfterthoughts": true
+        "no-underscore-dangle": 0,
+        "no-plusplus": 0
     }
 }
