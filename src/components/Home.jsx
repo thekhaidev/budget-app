@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar.jsx';
+import Topbar from './Topbar.jsx';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,13 +27,14 @@ const Home = () => {
 
   return (
     <Box>
+
       <Box component="div">
+        <Topbar logout={handleLogout} />
         <h1>
           Hello, world
         </h1>
         <Sidebar />
       </Box>
-      <Button onClick={() => handleLogout()}>Log Out</Button>
     </Box>
   );
 };

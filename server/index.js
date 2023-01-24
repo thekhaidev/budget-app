@@ -58,7 +58,7 @@ app.get('/test', async (req, res) => {
         }
       });
     }
-    res.send(resObj);
+    res.send(resObj).status(200);
 
     console.log('End');
   };
