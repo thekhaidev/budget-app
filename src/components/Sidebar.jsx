@@ -25,7 +25,14 @@ const Sidebar = ({ userData }) => {
         <Select defaultValue="checking" sx={{ width: '80%', marginBottom: '5%', alignSelf: 'center' }}>
           {/* <MenuItem value="checking">Checking</MenuItem>
           <MenuItem value="saving">Saving</MenuItem> */}
-          {accountNames.map((account) => <MenuItem value={account}>{account}</MenuItem>)}
+          {accountNames.map((account) => (
+            <MenuItem
+              key={account}
+              value={account}
+            >
+              {account}
+            </MenuItem>
+          ))}
         </Select>
         <Divider variant="middle" />
         <h2>Incoming</h2>

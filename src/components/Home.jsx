@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -9,6 +9,7 @@ import Topbar from './Topbar.jsx';
 
 const Home = ({ userData }) => {
   const navigate = useNavigate();
+  const [currentlySelected, setCurrentlySelected] = useState('checking');
   const handleLogout = () => {
     sessionStorage.removeItem('Auth Token');
     navigate('/login');
@@ -40,7 +41,7 @@ const Home = ({ userData }) => {
         <h1>
           Hello, world
         </h1>
-        <Button variant="outlined" onClick={() => console.log(userData)}>Data</Button>
+        <Button variant="outlined" onClick={() => console.log(userData[currentlySelected])}>Data</Button>
         <Sidebar userData={userData} />
       </Box>
     </Box>
