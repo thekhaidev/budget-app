@@ -24,12 +24,22 @@ const App = () => {
   }, []);
 
   return (
-    <Box style={{
-      border: '1px solid red', height: '95vh', width: 'auto', overflow: 'hidden',
+    <Box sx={{
+      border: '1px solid red',
+      height: '95vh',
+      width: 'auto',
+      overflow: 'hidden',
     }}
     >
       <Container
-        style={{ textAlign: 'center', border: '1px solid black', marginTop: '3%' }}
+        sx={{
+          textAlign: 'center',
+          border: '1px solid black',
+          marginTop: '3%',
+          mt: 10,
+          mr: 10,
+          width: { md: '75%' },
+        }}
         fixed
       >
         <h1>Kimmy&apos;s Checkbook</h1>
