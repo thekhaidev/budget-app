@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import {
-  Container,
   Box,
 } from '@mui/material';
 import {
@@ -13,6 +13,7 @@ import Home from './components/Home.jsx';
 import Form from './components/Form.jsx';
 
 const App = () => {
+  const [userData, setUserData] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,6 +21,12 @@ const App = () => {
 
     if (authToken) {
       navigate('/home');
+      axios.get('http://localhost:3000/test')
+        .then((res) => {
+          console.log(res.data);
+        }).catch((err) => {
+          console.log(err);
+        });
     }
   }, []);
 

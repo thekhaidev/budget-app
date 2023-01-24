@@ -31,20 +31,19 @@ const Form = ({ title }) => {
       ...formValue,
       [name]: value,
     });
-    console.log(formValue);
   };
 
   const handleAction = (name) => {
     const authentication = getAuth(app);
 
-    if (name === 'Register') {
-      createUserWithEmailAndPassword(authentication, formValue.email, formValue.password)
-        .then((response) => {
-          console.log(response);
-        }).catch((err) => {
-          console.log(err);
-        });
-    }
+    // if (name === 'Register') {
+    //   createUserWithEmailAndPassword(authentication, formValue.email, formValue.password)
+    //     .then((response) => {
+    //       console.log(response);
+    //     }).catch((err) => {
+    //       console.log(err);
+    //     });
+    // }
 
     if (name === 'Log In') {
       signInWithEmailAndPassword(
@@ -52,8 +51,8 @@ const Form = ({ title }) => {
         formValue.email,
         formValue.password,
       ).then((userCreds) => {
-        navigate('/home');
         sessionStorage.setItem('Auth Token', userCreds._tokenResponse.refreshToken);
+        navigate('/home');
         // console.log(userCreds._tokenResponse.refreshToken);
       }).catch((err) => {
         console.log(err);
