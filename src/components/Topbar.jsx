@@ -9,9 +9,7 @@ import {
 } from '@mui/material';
 
 const Topbar = ({ logout }) => {
-    const todayDate = new Date().toLocaleDateString('en-us', {
-        weekday: 'long', year: 'numeric', month: 'short', day: 'numeric',
-    });
+    const todayDate = new Date().toLocaleDateString('en-US');
 
     return (
         <AppBar sx={{
