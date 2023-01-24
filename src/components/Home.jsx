@@ -26,7 +26,14 @@ const Home = () => {
   }, []);
 
   return (
-    <Box>
+    <Box sx={{
+      textAlign: 'center',
+      border: '1px solid black',
+      mt: 10,
+      ml: { md: '19.5%' },
+      width: { md: '75%' },
+    }}
+    >
 
       <Box component="div">
         <Topbar logout={handleLogout} />

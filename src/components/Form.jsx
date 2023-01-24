@@ -5,6 +5,7 @@ import {
   FormControl,
   TextField,
   Button,
+  Container,
 } from '@mui/material';
 import {
   useNavigate,
@@ -62,8 +63,24 @@ const Form = ({ title }) => {
   };
 
   return (
-    <>
+
+    <Container
+      sx={{
+        textAlign: 'center',
+        border: '1px solid black',
+        mt: 10,
+        width: { md: '75%' },
+      }}
+      fixed
+    >
       <Box component="form" noValidate autoComplete="off">
+        <Box sx={{
+          border: '1px dotted green',
+          mt: 10,
+        }}
+        >
+          <h1>Kimmy&apos;s Checkbook</h1>
+        </Box>
         <h3>{title}</h3>
         <FormControl sx={{ width: '25ch' }}>
           <TextField
@@ -93,7 +110,8 @@ const Form = ({ title }) => {
       <Box component="span">
         Register for account
       </Box>
-    </>
+
+    </Container>
   );
 };
 

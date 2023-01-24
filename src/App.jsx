@@ -29,27 +29,16 @@ const App = () => {
       height: '95vh',
       width: 'auto',
       overflow: 'hidden',
+      textAlign: 'center',
     }}
     >
-      <Container
-        sx={{
-          textAlign: 'center',
-          border: '1px solid black',
-          marginTop: '3%',
-          mt: 10,
-          mr: 10,
-          width: { md: '75%' },
-        }}
-        fixed
-      >
-        <h1>Kimmy&apos;s Checkbook</h1>
-        <Routes>
-          <Route path="/login" element={<Form title="Log In" />} />
-          {/* <Route path="/register" element={<Form title="Register" />} /> */}
-          <Route path="/home" element={<Home />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Container>
+
+      <Routes>
+        <Route path="/login" element={<Form title="Log In" />} />
+        {/* <Route path="/register" element={<Form title="Register" />} /> */}
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
 
     </Box>
   );
