@@ -6,6 +6,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar.jsx';
 import Topbar from './Topbar.jsx';
+import TransCard from './TransCard.jsx';
 
 const Home = ({ userData }) => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const Home = ({ userData }) => {
         <h1>
           Hello, world
         </h1>
+        <TransCard />
         <Button variant="outlined" onClick={() => console.log(userData[currentlySelected])}>Data</Button>
         <Sidebar userData={userData} />
       </Box>
