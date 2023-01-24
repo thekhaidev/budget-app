@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import {
   Box,
-
+  Button,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar.jsx';
 import Topbar from './Topbar.jsx';
 
-const Home = () => {
+const Home = ({ userData }) => {
   const navigate = useNavigate();
   const handleLogout = () => {
     sessionStorage.removeItem('Auth Token');
@@ -40,7 +40,8 @@ const Home = () => {
         <h1>
           Hello, world
         </h1>
-        <Sidebar />
+        <Button variant="outlined" onClick={() => console.log(userData)}>Data</Button>
+        <Sidebar userData={userData} />
       </Box>
     </Box>
   );
