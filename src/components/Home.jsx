@@ -11,6 +11,7 @@ import TransCard from './TransCard.jsx';
 const Home = ({ userData }) => {
   const navigate = useNavigate();
   const [currentlySelected, setCurrentlySelected] = useState('checking');
+  const transactions = userData[currentlySelected];
   const handleLogout = () => {
     sessionStorage.removeItem('Auth Token');
     navigate('/login');
@@ -40,11 +41,11 @@ const Home = ({ userData }) => {
       <Box component="div">
         <Topbar logout={handleLogout} />
         <h1>
-          Hello, world
+          {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
         </h1>
-        <TransCard />
-        <Button variant="outlined" onClick={() => console.log(userData[currentlySelected])}>Data</Button>
-        <Sidebar userData={userData} />
+        {/* <TransCard note={transactions[0].note} amount="transactions[0].amount" /> */}
+        <Button variant="outlined" onClick={() => console.log(transactions[0])}>Data</Button>
+        <Sidebar select={setCurrentlySelected} userData={userData} />
       </Box>
     </Box>
   );

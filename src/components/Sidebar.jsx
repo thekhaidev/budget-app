@@ -4,10 +4,16 @@ import React from 'react'; import {
   Box,
   Select,
   MenuItem,
+  Button,
 } from '@mui/material';
 
-const Sidebar = ({ userData }) => {
+const Sidebar = ({ userData, select }) => {
   const accountNames = Object.keys(userData);
+  const defaultValue = accountNames[0];
+
+  const handleChange = (e) => {
+    select(e.target.value);
+  };
 
   return (
     <Box sx={{ display: { xs: 'none', md: 'block' } }}>
@@ -22,7 +28,11 @@ const Sidebar = ({ userData }) => {
       >
 
         <h2>Accounts</h2>
-        <Select defaultValue="checking" sx={{ width: '80%', marginBottom: '5%', alignSelf: 'center' }}>
+        <Select
+          defaultValue="all"
+          sx={{ width: '80%', marginBottom: '5%', alignSelf: 'center' }}
+          onChange={handleChange}
+        >
           {/* <MenuItem value="checking">Checking</MenuItem>
           <MenuItem value="saving">Saving</MenuItem> */}
           {accountNames.map((account) => (
@@ -30,9 +40,10 @@ const Sidebar = ({ userData }) => {
               key={account}
               value={account}
             >
-              {account}
+              {account[0].toUpperCase() + account.slice(1)}
             </MenuItem>
           ))}
+          <MenuItem value="all">All</MenuItem>
         </Select>
         <Divider variant="middle" />
         <h2>Incoming</h2>
@@ -41,7 +52,7 @@ const Sidebar = ({ userData }) => {
         $1
         <h2>Balance</h2>
         $22,999,999
-
+        <Button onClick={() => console.log(accountNames)}>Data</Button>
       </Drawer>
     </Box>
   );
