@@ -9,11 +9,15 @@ import {
   Button,
 } from '@mui/material';
 
-const TransCard = ({ amount, note, account }) => {
+const TransCard = ({
+  amount, note, account, time,
+}) => {
   const USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   });
+
+  const dateTime = new Date(time * 1000).toLocaleString('en-us', { timeZone: 'CST' });
 
   return (
     <Grid container spacing={0}>
@@ -32,10 +36,13 @@ const TransCard = ({ amount, note, account }) => {
               {' '}
               {account[0].toUpperCase() + account.slice(1)}
             </Typography>
+            <Typography variant="body">
+              {dateTime}
+            </Typography>
             <Typography variant="h5">
               {note}
             </Typography>
-            <Typography variant="body">
+            <Typography variant="body2">
               {USDollar.format(amount)}
             </Typography>
           </CardContent>
@@ -46,9 +53,9 @@ const TransCard = ({ amount, note, account }) => {
             <Button
               variant="outline"
               size="small"
+              onClick={() => console.log(Object.keys(dateTime))}
             >
               Edit
-
             </Button>
             <Button
               variant="outline"

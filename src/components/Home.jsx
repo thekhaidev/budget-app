@@ -61,11 +61,12 @@ const Home = () => {
             <TransGrid
               note={transactions[0].note}
               amount={transactions[0].amount}
+              time={transactions[0].time._seconds}
               account={currentlySelected}
             />
           )
           : <CircularProgress />}
-        <Button variant="outlined" onClick={() => console.log(transactions)}>Data</Button>
+        <Button variant="outlined" onClick={() => console.log(transactions[0].time)}>Data</Button>
         <Sidebar select={setCurrentlySelected} userData={userData} />
       </Box>
     </Box>
