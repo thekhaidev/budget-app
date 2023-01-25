@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import {
   Box,
@@ -8,7 +8,6 @@ import {
   Route,
   useNavigate,
 } from 'react-router-dom';
-import { SettingsInputSvideoRounded } from '@mui/icons-material';
 import Home from './components/Home.jsx';
 import Form from './components/Form.jsx';
 
