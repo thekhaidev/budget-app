@@ -56,6 +56,7 @@ const Home = () => {
         <h1>
           {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
         </h1>
+        <Button variant="outlined"> Add Entry</Button>
         {transactions
           ? (
             <TransGrid
