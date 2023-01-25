@@ -53,22 +53,35 @@ const Home = () => {
 
       <Box component="div">
         <Topbar logout={handleLogout} />
-        <h1>
-          {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
-        </h1>
-        <Button variant="outlined"> Add Entry</Button>
-        {transactions
-          ? (
-            <TransGrid
-              note={transactions[0].note}
-              amount={transactions[0].amount}
-              time={transactions[0].time._seconds}
-              account={currentlySelected}
-            />
-          )
-          : <CircularProgress />}
+
+        <Box sx={{
+          mb: 2,
+        }}
+        >
+          <h1>
+            {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
+          </h1>
+          <Button variant="outlined"> Add Entry</Button>
+
+        </Box>
+        <Box sx={{
+          mb: 2,
+        }}
+        >
+          {' '}
+          {transactions
+            ? (
+              <TransGrid
+                note={transactions[0].note}
+                amount={transactions[0].amount}
+                time={transactions[0].time._seconds}
+                account={currentlySelected}
+              />
+            )
+            : <CircularProgress />}
+          <Sidebar select={setCurrentlySelected} userData={userData} />
+        </Box>
         <Button variant="outlined" onClick={() => console.log(transactions)}>Data</Button>
-        <Sidebar select={setCurrentlySelected} userData={userData} />
       </Box>
     </Box>
   );
