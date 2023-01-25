@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Box,
   Button,
+  CircularProgress,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar.jsx';
@@ -10,7 +11,7 @@ import TransGrid from './TransGrid.jsx';
 
 const Home = ({ userData }) => {
   const navigate = useNavigate();
-  const [currentlySelected, setCurrentlySelected] = useState('checking');
+  const [currentlySelected, setCurrentlySelected] = useState('all');
   const transactions = userData[currentlySelected];
   const handleLogout = () => {
     sessionStorage.removeItem('Auth Token');
@@ -45,7 +46,7 @@ const Home = ({ userData }) => {
         </h1>
         {transactions
           ? <TransGrid note={transactions[0].note} amount={transactions[0].amount} />
-          : null}
+          : <CircularProgress />}
         <Button variant="outlined" onClick={() => console.log(transactions[0])}>Data</Button>
         <Sidebar select={setCurrentlySelected} userData={userData} />
       </Box>

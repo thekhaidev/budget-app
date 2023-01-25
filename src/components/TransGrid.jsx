@@ -2,6 +2,7 @@ import React from 'react';
 
 import {
   Grid,
+  Card,
 } from '@mui/material';
 
 const TransGrid = ({ amount, note }) => {
@@ -20,8 +21,10 @@ const TransGrid = ({ amount, note }) => {
           border: '1px solid black',
         }}
       >
-        <h1>{note}</h1>
-        <h3>{USDollar.format(amount)}</h3>
+        <Card>
+          <h1>{note}</h1>
+          <h3>{USDollar.format(amount)}</h3>
+        </Card>
       </Grid>
     </Grid>
   );
