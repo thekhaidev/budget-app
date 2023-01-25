@@ -5,12 +5,17 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Sidebar from './Sidebar.jsx';
 import Topbar from './Topbar.jsx';
 import TransGrid from './TransGrid.jsx';
 
-const Home = ({ userData }) => {
+const Home = () => {
   const navigate = useNavigate();
+  const [userData, setUserData] = useState({
+    all:
+  'test',
+  });
   const [currentlySelected, setCurrentlySelected] = useState('all');
   const transactions = userData[currentlySelected];
   const handleLogout = () => {
@@ -21,6 +26,13 @@ const Home = ({ userData }) => {
     const authToken = sessionStorage.getItem('Auth Token');
 
     if (authToken) {
+      axios.get('http://localhost:3000/test')
+        .then((res) => {
+          setUserData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       navigate('/home');
     }
 
