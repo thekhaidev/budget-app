@@ -4,12 +4,10 @@ import React from 'react'; import {
   Box,
   Select,
   MenuItem,
-  Button,
 } from '@mui/material';
 
 const Sidebar = ({ userData, select }) => {
   const accountNames = Object.keys(userData);
-  const defaultValue = accountNames[0];
 
   const handleChange = (e) => {
     select(e.target.value);
@@ -52,7 +50,6 @@ const Sidebar = ({ userData, select }) => {
         $1
         <h2>Balance</h2>
         $22,999,999
-        <Button onClick={() => console.log(accountNames)}>Data</Button>
       </Drawer>
     </Box>
   );

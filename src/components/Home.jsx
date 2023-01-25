@@ -6,7 +6,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar.jsx';
 import Topbar from './Topbar.jsx';
-import TransCard from './TransCard.jsx';
+import TransGrid from './TransGrid.jsx';
 
 const Home = ({ userData }) => {
   const navigate = useNavigate();
@@ -43,7 +43,9 @@ const Home = ({ userData }) => {
         <h1>
           {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
         </h1>
-        {/* <TransCard note={transactions[0].note} amount="transactions[0].amount" /> */}
+        {transactions
+          ? <TransGrid note={transactions[0].note} amount={transactions[0].amount} />
+          : null}
         <Button variant="outlined" onClick={() => console.log(transactions[0])}>Data</Button>
         <Sidebar select={setCurrentlySelected} userData={userData} />
       </Box>

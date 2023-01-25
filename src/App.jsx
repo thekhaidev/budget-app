@@ -20,7 +20,6 @@ const App = () => {
     const authToken = sessionStorage.getItem('Auth Token');
 
     if (authToken) {
-      navigate('/home');
       axios.get('http://localhost:3000/test')
         .then((res) => {
           setUserData(res.data);
@@ -28,6 +27,7 @@ const App = () => {
         .catch((err) => {
           console.log(err);
         });
+      navigate('/home');
     }
   }, []);
 
