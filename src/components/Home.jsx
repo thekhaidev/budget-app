@@ -16,7 +16,7 @@ const Home = () => {
     all:
   'test',
   });
-  const [currentlySelected, setCurrentlySelected] = useState('all');
+  const [currentlySelected, setCurrentlySelected] = useState('checking');
   const transactions = userData[currentlySelected];
   const handleLogout = () => {
     sessionStorage.removeItem('Auth Token');
@@ -57,9 +57,15 @@ const Home = () => {
           {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
         </h1>
         {transactions
-          ? <TransGrid note={transactions[0].note} amount={transactions[0].amount} />
+          ? (
+            <TransGrid
+              note={transactions[0].note}
+              amount={transactions[0].amount}
+              account={currentlySelected}
+            />
+          )
           : <CircularProgress />}
-        <Button variant="outlined" onClick={() => console.log(transactions[0])}>Data</Button>
+        <Button variant="outlined" onClick={() => console.log(transactions)}>Data</Button>
         <Sidebar select={setCurrentlySelected} userData={userData} />
       </Box>
     </Box>

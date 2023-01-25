@@ -3,9 +3,13 @@ import React from 'react';
 import {
   Grid,
   Card,
+  CardActions,
+  CardContent,
+  Typography,
+  Button,
 } from '@mui/material';
 
-const TransCard = ({ amount, note }) => {
+const TransCard = ({ amount, note, account }) => {
   const USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -22,8 +26,39 @@ const TransCard = ({ amount, note }) => {
         }}
       >
         <Card>
-          <h1>{note}</h1>
-          <h3>{USDollar.format(amount)}</h3>
+          <CardContent>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Account:
+              {' '}
+              {account[0].toUpperCase() + account.slice(1)}
+            </Typography>
+            <Typography variant="h5">
+              {note}
+            </Typography>
+            <Typography variant="body">
+              {USDollar.format(amount)}
+            </Typography>
+          </CardContent>
+          <CardActions sx={{
+            justifyContent: 'center',
+          }}
+          >
+            <Button
+              variant="outline"
+              size="small"
+            >
+              Edit
+
+            </Button>
+            <Button
+              variant="outline"
+              size="small"
+            >
+              Delete
+
+            </Button>
+          </CardActions>
+
         </Card>
       </Grid>
     </Grid>

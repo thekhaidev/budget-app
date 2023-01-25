@@ -69,6 +69,10 @@ app.get('/test', async (req, res) => {
   // res.send(resObj);
 });
 
+app.post('/test', async (req, res) => {
+  res.status(200).send('cool');
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
 });
