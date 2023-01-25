@@ -17,7 +17,7 @@ const TransCard = ({
     currency: 'USD',
   });
 
-  const dateTime = new Date(time * 1000).toLocaleString('en-us', { timeZone: 'CST' });
+  const dateTime = new Date(time * 1000).toDateString('en-us', { timeZone: 'CST' });
 
   return (
     <Grid container spacing={0}>
@@ -53,7 +53,6 @@ const TransCard = ({
             <Button
               variant="outline"
               size="small"
-              onClick={() => console.log(Object.keys(dateTime))}
             >
               Edit
             </Button>
