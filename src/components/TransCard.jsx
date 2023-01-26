@@ -10,7 +10,7 @@ import {
 import DeleteButton from './common/DeleteButton.jsx';
 
 const TransCard = ({
-  amount, note, account, time, id,
+  amount, note, account, time, id, setUserData,
 }) => {
   const USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -56,7 +56,7 @@ const TransCard = ({
           >
             Edit
           </Button>
-          <DeleteButton account={account} id={id} />
+          <DeleteButton account={account} id={id} setUserData={setUserData} />
         </CardActions>
 
       </Card>

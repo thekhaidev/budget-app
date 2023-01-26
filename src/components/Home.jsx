@@ -72,6 +72,7 @@ const Home = () => {
               <TransGrid
                 transactions={transactions}
                 account={currentlySelected}
+                setUserData={setUserData}
               />
             )
             : <CircularProgress />}

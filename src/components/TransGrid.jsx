@@ -6,6 +6,7 @@ import TransCard from './TransCard.jsx';
 
 const TransGrid = ({
   transactions,
+  setUserData,
 }) => (
   <Grid container spacing={0}>
     {transactions.map((transaction) => (
@@ -16,6 +17,7 @@ const TransGrid = ({
         note={transaction.note}
         time={transaction.time._seconds}
         account={transaction.account}
+        setUserData={setUserData}
       />
       // <button
       //   type="button"

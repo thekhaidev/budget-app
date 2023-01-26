@@ -64,7 +64,7 @@ app.get('/test', async (req, res) => {
         if (!resObj[currAcc]) {
           resObj[currAcc] = [data];
         } else {
-          resObj[currAcc] = [...resObj[acc], data];
+          resObj[currAcc] = [...resObj[currAcc], data];
         }
         resObj.all = all;
       });

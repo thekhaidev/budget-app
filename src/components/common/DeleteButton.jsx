@@ -1,21 +1,29 @@
 import React from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
 import {
 
   Button,
 } from '@mui/material';
 
-const DeleteButton = ({ account, id }) => {
+const DeleteButton = ({ account, id, setUserData }) => {
   const handleSubmit = () => {
     const postObj = {
       account,
       id,
     };
-    Axios.post('http://localhost:3000/delete', postObj)
+    axios.post('http://localhost:3000/delete', postObj)
       .then((res) => {
         console.log(res.data);
       }).catch((err) => {
+        console.log(err);
+      });
+
+    axios.get('http://localhost:3000/test')
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => {
         console.log(err);
       });
   };
