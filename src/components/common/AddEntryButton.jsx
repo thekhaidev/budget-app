@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import AddEntryForm from '../AddEntryForm.jsx';
 
-const AddEntryButton = ({ currentlySelected }) => {
+const AddEntryButton = ({ currentlySelected, accountNames }) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -26,7 +26,12 @@ const AddEntryButton = ({ currentlySelected }) => {
         Add Entry
 
       </Button>
-      <AddEntryForm open={open} close={handleClose} currentlySelected={currentlySelected} />
+      <AddEntryForm
+        open={open}
+        close={handleClose}
+        currentlySelected={currentlySelected}
+        accountNames={accountNames}
+      />
     </Box>
   );
 };

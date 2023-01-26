@@ -14,7 +14,12 @@ import {
   MenuItem,
 } from '@mui/material';
 
-const AddEntryForm = ({ open, close, currentlySelected }) => {
+const AddEntryForm = ({
+  open,
+  close,
+  currentlySelected,
+  accountNames,
+}) => {
   const [formValue, setFormValue] = useState({
     note: '', amount: '', time: '', type: '',
   });
@@ -29,6 +34,7 @@ const AddEntryForm = ({ open, close, currentlySelected }) => {
     setFormValue({
       ...formValue,
       [name]: value,
+      time: timeObj,
     });
     console.log(formValue);
   };
@@ -50,9 +56,6 @@ const AddEntryForm = ({ open, close, currentlySelected }) => {
     <Dialog open={open} onClose={close}>
       <DialogTitle>Add Entry</DialogTitle>
       <DialogContent>
-        <DialogContentText>
-          Add an entry
-        </DialogContentText>
         <Box
           component="form"
           autoComplete="off"
@@ -83,10 +86,34 @@ const AddEntryForm = ({ open, close, currentlySelected }) => {
             />
             <Select
               onChange={handleSelect}
-              defaultValue="checking"
+              defaultValue="select-an-account"
             >
-              <MenuItem value="checking">Checking</MenuItem>
-              <MenuItem value="saving">Saving</MenuItem>
+              {/* <MenuItem value="checking">Checking</MenuItem>
+              <MenuItem value="saving">Saving</MenuItem> */}
+              <MenuItem
+                value="select-an-account"
+                sx={{
+                  display: 'none',
+                }}
+              >
+                Select an account
+
+              </MenuItem>
+              {(currentlySelected === 'all')
+                ? accountNames.map((account) => (
+                  <MenuItem
+                    value={account}
+                  >
+                    {account[0].toUpperCase() + account.slice(1)}
+                  </MenuItem>
+                ))
+                : (
+                  <MenuItem
+                    value={currentlySelected}
+                  >
+                    {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
+                  </MenuItem>
+                )}
             </Select>
 
           </FormControl>

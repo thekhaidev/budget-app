@@ -6,9 +6,7 @@ import React from 'react'; import {
   MenuItem,
 } from '@mui/material';
 
-const Sidebar = ({ userData, select }) => {
-  const accountNames = Object.keys(userData);
-
+const Sidebar = ({ accountNames, select }) => {
   const handleChange = (e) => {
     select(e.target.value);
   };

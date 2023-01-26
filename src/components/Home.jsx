@@ -16,6 +16,7 @@ const Home = () => {
   const [userData, setUserData] = useState({});
   const [currentlySelected, setCurrentlySelected] = useState('all');
   const transactions = userData[currentlySelected];
+  const accountNames = Object.keys(userData);
 
   const handleLogout = () => {
     sessionStorage.removeItem('Auth Token');
@@ -60,7 +61,7 @@ const Home = () => {
           <h1>
             {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
           </h1>
-          <AddEntryButton currentlySelected={currentlySelected} />
+          <AddEntryButton currentlySelected={currentlySelected} accountNames={accountNames} />
         </Box>
         <Box sx={{
           mb: 2,
@@ -73,10 +74,11 @@ const Home = () => {
                 transactions={transactions}
                 account={currentlySelected}
                 setUserData={setUserData}
+                accountNames={accountNames}
               />
             )
             : <CircularProgress />}
-          <Sidebar select={setCurrentlySelected} userData={userData} />
+          <Sidebar select={setCurrentlySelected} accountNames={accountNames} />
         </Box>
         <Button variant="outlined" onClick={() => console.log(transactions)}>Data</Button>
       </Box>
