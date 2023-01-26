@@ -8,7 +8,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   Select,
   MenuItem,
@@ -29,8 +28,8 @@ const AddEntryForm = ({
     _seconds: date,
   };
 
-  const value = 'all';
-  const accountArray = accountNames.filter((item) => item !== value);
+  const allValue = 'all';
+  const accountArray = accountNames.filter((item) => item !== allValue);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -40,14 +39,6 @@ const AddEntryForm = ({
       time: timeObj,
     });
     console.log(formValue);
-  };
-
-  const handleSelect = (e) => {
-    const { value } = e.target;
-    setFormValue({
-      ...formValue,
-      type: value,
-    });
   };
 
   const handleSubmit = () => {
@@ -88,11 +79,10 @@ const AddEntryForm = ({
               onChange={handleInputChange}
             />
             <Select
-              onChange={handleSelect}
+              onChange={handleInputChange}
+              name="type"
               defaultValue="select-an-account"
             >
-              {/* <MenuItem value="checking">Checking</MenuItem>
-              <MenuItem value="saving">Saving</MenuItem> */}
               <MenuItem
                 value="select-an-account"
                 sx={{
@@ -105,6 +95,7 @@ const AddEntryForm = ({
               {(currentlySelected === 'all')
                 ? accountArray.map((account) => (
                   <MenuItem
+                    key={account}
                     value={account}
                   >
                     {account[0].toUpperCase() + account.slice(1)}
