@@ -52,14 +52,13 @@ app.get('/test', async (req, res) => {
       const currAcc = test[i];
       const accTrans = await accounts.doc(currAcc).collection('transactions').get();
       accTrans.forEach((acc) => {
+        all.push(acc.data());
         if (!resObj[currAcc]) {
           resObj[currAcc] = [acc.data()];
         } else {
-          resObj.all = [...resObj.all, acc.data()];
           resObj[currAcc] = [...resObj[acc], acc.data()];
         }
 
-        all.push(acc.data());
         resObj.all = all;
       });
     }

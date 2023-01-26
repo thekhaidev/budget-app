@@ -5,10 +5,18 @@ import {
 import TransCard from './TransCard.jsx';
 
 const TransGrid = ({
-  amount, note, account, time,
+  transactions,
+  account,
 }) => (
   <Grid container spacing={0}>
-    <TransCard amount={amount} note={note} account={account} time={time} />
+    {transactions.map((transaction) => (
+      <TransCard
+        amount={transaction.amount}
+        note={transaction.note}
+        time={transaction.time}
+        account={account}
+      />
+    )) }
   </Grid>
 );
 export default TransGrid;

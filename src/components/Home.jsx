@@ -70,9 +70,7 @@ const Home = () => {
           {transactions
             ? (
               <TransGrid
-                note={transactions[0].note}
-                amount={transactions[0].amount}
-                time={transactions[0].time._seconds}
+                transactions={transactions}
                 account={currentlySelected}
               />
             )

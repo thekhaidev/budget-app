@@ -34,7 +34,7 @@ const TransCard = ({
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
               Account:
               {' '}
-              {account[0].toUpperCase() + account.slice(1)}
+              {account.toUpperCase() + account.slice(1)}
             </Typography>
             <Typography variant="body">
               {dateTime}
