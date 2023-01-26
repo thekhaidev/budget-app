@@ -82,7 +82,13 @@ app.get('/test', async (req, res) => {
 });
 
 app.post('/delete', async (req, res) => {
-  res.status(200).send('cool');
+  const { account, id } = req.body;
+
+  db.collection('users').doc('kim').collection('accounts').doc(account)
+    .collection('transactions')
+    .doc(id)
+    .delete()
+    .then(() => res.status(200).send('ID Deleted'));
 });
 
 app.listen(port, () => {

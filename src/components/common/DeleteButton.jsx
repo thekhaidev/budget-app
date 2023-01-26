@@ -8,7 +8,11 @@ import {
 
 const DeleteButton = ({ account, id }) => {
   const handleSubmit = () => {
-    Axios.post('http://localhost:3000/delete', {})
+    const postObj = {
+      account,
+      id,
+    };
+    Axios.post('http://localhost:3000/delete', postObj)
       .then((res) => {
         console.log(res.data);
       }).catch((err) => {
