@@ -20,6 +20,9 @@ const AddEntryForm = ({ open, close, currentlySelected }) => {
   });
 
   const date = new Date().getTime() / 1000;
+  const timeObj = {
+    _seconds: date,
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +42,7 @@ const AddEntryForm = ({ open, close, currentlySelected }) => {
   };
 
   const handleSubmit = () => {
-    console.log(date);
+    console.log(timeObj);
   };
 
   return (
