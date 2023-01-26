@@ -13,9 +13,16 @@ const TransGrid = ({
       <TransCard
         amount={transaction.amount}
         note={transaction.note}
-        time={transaction.time}
+        time={transaction.time._seconds}
         account={account}
       />
+      // <button
+      //   type="button"
+      //   onClick={() => console.log(account)}
+      // >
+      //   Click
+
+      // </button>
     )) }
   </Grid>
 );

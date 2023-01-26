@@ -52,7 +52,6 @@ const Sidebar = ({ userData, select }) => {
         <h2>Balance</h2>
         $22,999,999
       </Drawer>
-      <button type="button" onClick={() => console.log(accountNames[0])}>AccountNames</button>
     </Box>
   );
 };
