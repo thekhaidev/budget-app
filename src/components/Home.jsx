@@ -9,6 +9,7 @@ import axios from 'axios';
 import Sidebar from './Sidebar.jsx';
 import Topbar from './Topbar.jsx';
 import TransGrid from './TransGrid.jsx';
+import AddEntryButton from './common/AddEntryButton.jsx';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -59,8 +60,7 @@ const Home = () => {
           <h1>
             {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
           </h1>
-          <Button variant="outlined"> Add Entry</Button>
-
+          <AddEntryButton />
         </Box>
         <Box sx={{
           mb: 2,
