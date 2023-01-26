@@ -1,4 +1,4 @@
-import React from 'react'; import {
+import React, { useEffect } from 'react'; import {
   Drawer,
   Divider,
   Box,
@@ -31,6 +31,7 @@ const Sidebar = ({ userData, select }) => {
           sx={{ width: '80%', marginBottom: '5%', alignSelf: 'center' }}
           onChange={handleChange}
         >
+          {/* <MenuItem value="all">All</MenuItem> */}
           {/* <MenuItem value="checking">Checking</MenuItem>
           <MenuItem value="saving">Saving</MenuItem> */}
           {accountNames.map((account) => (
@@ -41,7 +42,7 @@ const Sidebar = ({ userData, select }) => {
               {account[0].toUpperCase() + account.slice(1)}
             </MenuItem>
           ))}
-          <MenuItem value="all">All</MenuItem>
+
         </Select>
         <Divider variant="middle" />
         <h2>Incoming</h2>
@@ -51,6 +52,7 @@ const Sidebar = ({ userData, select }) => {
         <h2>Balance</h2>
         $22,999,999
       </Drawer>
+      <button type="button" onClick={() => console.log(accountNames[0])}>AccountNames</button>
     </Box>
   );
 };

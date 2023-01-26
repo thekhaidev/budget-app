@@ -12,12 +12,10 @@ import TransGrid from './TransGrid.jsx';
 
 const Home = () => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({
-    all:
-  'test',
-  });
-  const [currentlySelected, setCurrentlySelected] = useState('checking');
+  const [userData, setUserData] = useState({});
+  const [currentlySelected, setCurrentlySelected] = useState('all');
   const transactions = userData[currentlySelected];
+
   const handleLogout = () => {
     sessionStorage.removeItem('Auth Token');
     navigate('/login');
@@ -81,7 +79,7 @@ const Home = () => {
             : <CircularProgress />}
           <Sidebar select={setCurrentlySelected} userData={userData} />
         </Box>
-        <Button variant="outlined" onClick={() => console.log(transactions)}>Data</Button>
+        <Button variant="outlined" onClick={() => console.log(userData)}>Data</Button>
       </Box>
     </Box>
   );

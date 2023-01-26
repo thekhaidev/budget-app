@@ -44,6 +44,7 @@ app.get('/test', async (req, res) => {
   }, []);
   // need to get all transactions for accounts
   const resObj = {};
+  const all = [];
   const getAccountTransactions = async () => {
     console.log('Start');
 
@@ -54,8 +55,12 @@ app.get('/test', async (req, res) => {
         if (!resObj[currAcc]) {
           resObj[currAcc] = [acc.data()];
         } else {
+          resObj.all = [...resObj.all, acc.data()];
           resObj[currAcc] = [...resObj[acc], acc.data()];
         }
+
+        all.push(acc.data());
+        resObj.all = all;
       });
     }
     res.send(resObj).status(200);
