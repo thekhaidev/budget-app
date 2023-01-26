@@ -34,9 +34,12 @@ app.get('/test', async (req, res) => {
   const user = await userRef.get();
   const accounts = userRef.collection('accounts');
   const accountList = await userRef.collection('accounts').listDocuments();
-  // const checking = await accounts.doc('checking').collection('transactions').get();
-  // const savings = await accounts.doc('savings').collection('transactions').get();
+  const checking = await accounts.doc('checking').collection('transactions').get();
+  const savings = await accounts.doc('savings').collection('transactions').get();
 
+  // checking.forEach((doc) => {
+  //   console.log(doc.id, '=>', doc.data());
+  // });
   // need to get all accounts
   const test = accountList.reduce((acc, curr) => {
     acc.push(curr.id);
@@ -52,13 +55,17 @@ app.get('/test', async (req, res) => {
       const currAcc = test[i];
       const accTrans = await accounts.doc(currAcc).collection('transactions').get();
       accTrans.forEach((acc) => {
-        all.push(acc.data());
-        if (!resObj[currAcc]) {
-          resObj[currAcc] = [acc.data()];
-        } else {
-          resObj[currAcc] = [...resObj[acc], acc.data()];
-        }
+        const { id } = acc;
+        const data = acc.data();
+        data.id = id;
+        data.account = currAcc;
 
+        all.push(data);
+        if (!resObj[currAcc]) {
+          resObj[currAcc] = [data];
+        } else {
+          resObj[currAcc] = [...resObj[acc], data];
+        }
         resObj.all = all;
       });
     }
@@ -69,6 +76,7 @@ app.get('/test', async (req, res) => {
   // send back as single object/array
 
   // console.log('User', '=>', user.data());
+  // console.log('User stuff -->', accountList);
   getAccountTransactions();
   // res.send(resObj);
 });

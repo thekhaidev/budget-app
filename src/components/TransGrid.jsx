@@ -6,15 +6,16 @@ import TransCard from './TransCard.jsx';
 
 const TransGrid = ({
   transactions,
-  account,
 }) => (
   <Grid container spacing={0}>
     {transactions.map((transaction) => (
       <TransCard
+        key={transaction.id}
+        id={transaction.id}
         amount={transaction.amount}
         note={transaction.note}
         time={transaction.time._seconds}
-        account={account}
+        account={transaction.account}
       />
       // <button
       //   type="button"

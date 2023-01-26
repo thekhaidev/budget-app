@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 
 const TransCard = ({
-  amount, note, account, time,
+  amount, note, account, time, id,
 }) => {
   const USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -52,6 +52,7 @@ const TransCard = ({
           <Button
             variant="outline"
             size="small"
+            onClick={() => console.log(id)}
           >
             Edit
           </Button>
