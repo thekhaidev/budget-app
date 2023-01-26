@@ -29,6 +29,9 @@ const AddEntryForm = ({
     _seconds: date,
   };
 
+  const value = 'all';
+  const accountArray = accountNames.filter((item) => item !== value);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormValue({
@@ -100,7 +103,7 @@ const AddEntryForm = ({
 
               </MenuItem>
               {(currentlySelected === 'all')
-                ? accountNames.map((account) => (
+                ? accountArray.map((account) => (
                   <MenuItem
                     value={account}
                   >
