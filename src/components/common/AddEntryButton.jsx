@@ -4,7 +4,14 @@ import {
   Button,
 } from '@mui/material';
 
-const AddEntryButton = () => (
-  <Button variant="outlined"> Add Entry</Button>
+const AddEntryButton = ({ currentlySelected }) => (
+  <Button
+    variant="outlined"
+    onClick={() => console.log(currentlySelected)}
+  >
+    {' '}
+    Add Entry
+
+  </Button>
 );
 export default AddEntryButton;

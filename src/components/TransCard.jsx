@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Grid,
   Card,
@@ -8,6 +7,7 @@ import {
   Typography,
   Button,
 } from '@mui/material';
+import DeleteButton from './common/DeleteButton.jsx';
 
 const TransCard = ({
   amount, note, account, time, id,
@@ -56,13 +56,7 @@ const TransCard = ({
           >
             Edit
           </Button>
-          <Button
-            variant="outline"
-            size="small"
-          >
-            Delete
-
-          </Button>
+          <DeleteButton account={account} id={id} />
         </CardActions>
 
       </Card>

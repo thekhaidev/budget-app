@@ -60,7 +60,7 @@ const Home = () => {
           <h1>
             {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
           </h1>
-          <AddEntryButton />
+          <AddEntryButton currentlySelected={currentlySelected} />
         </Box>
         <Box sx={{
           mb: 2,

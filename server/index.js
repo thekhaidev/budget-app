@@ -81,7 +81,7 @@ app.get('/test', async (req, res) => {
   // res.send(resObj);
 });
 
-app.post('/test', async (req, res) => {
+app.post('/delete', async (req, res) => {
   res.status(200).send('cool');
 });
 
