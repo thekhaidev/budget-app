@@ -1,39 +1,32 @@
 import React, { useState } from 'react';
-
 import {
   Button,
-  Backdrop,
   Box,
-  CircularProgress,
 } from '@mui/material';
+import AddEntryForm from '../AddEntryForm.jsx';
 
 const AddEntryButton = ({ currentlySelected }) => {
   const [open, setOpen] = useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
   const handleClose = () => {
     setOpen(false);
-  };
-  const handleToggle = () => {
-    setOpen(!open);
   };
 
   return (
     <Box>
       <Button
         variant="outlined"
-        onClick={handleToggle}
+        onClick={handleClickOpen}
       >
         {' '}
         Add Entry
 
       </Button>
-      <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={open}
-        onClick={handleClose}
-      >
-        <Box>{currentlySelected}</Box>
-      </Backdrop>
+      <AddEntryForm open={open} close={handleClose} currentlySelected={currentlySelected} />
     </Box>
   );
 };
