@@ -1,5 +1,7 @@
 const express = require('express');
+// eslint-disable-next-line import/no-unresolved
 const { initializeApp, cert } = require('firebase-admin/app');
+// eslint-disable-next-line import/no-unresolved
 const { getFirestore } = require('firebase-admin/firestore');
 
 const app = express();
@@ -31,11 +33,9 @@ app.get('/', (req, res) => {
 
 app.get('/test', async (req, res) => {
   const userRef = db.collection('users').doc('kim');
-  const user = await userRef.get();
+  // const user = await userRef.get();
   const accounts = userRef.collection('accounts');
   const accountList = await userRef.collection('accounts').listDocuments();
-  const checking = await accounts.doc('checking').collection('transactions').get();
-  const savings = await accounts.doc('savings').collection('transactions').get();
 
   // checking.forEach((doc) => {
   //   console.log(doc.id, '=>', doc.data());
@@ -45,12 +45,12 @@ app.get('/test', async (req, res) => {
     acc.push(curr.id);
     return acc;
   }, []);
+
+  (console.log('test ', test));
   // need to get all transactions for accounts
   const resObj = {};
   const all = [];
   const getAccountTransactions = async () => {
-    console.log('Start');
-
     for (let i = 0; i < test.length; i++) {
       const currAcc = test[i];
       const accTrans = await accounts.doc(currAcc).collection('transactions').get();
@@ -67,11 +67,10 @@ app.get('/test', async (req, res) => {
           resObj[currAcc] = [...resObj[currAcc], data];
         }
         resObj.all = all;
+        resObj.accounts = test;
       });
     }
     res.send(resObj).status(200);
-
-    console.log('End');
   };
   // send back as single object/array
 
@@ -107,6 +106,16 @@ app.post('/entry', async (req, res) => {
     .collection('transactions')
     .add(entryObj)
     .then(() => res.status(200).send('Entry Added'));
+});
+
+app.post('/account', async (req, res) => {
+  const { account } = req.body;
+  console.log(account);
+
+  db.collection('users').doc('kim').collection('accounts')
+    .doc(account)
+    .set({})
+    .then(() => res.status(200).send('Account Added'));
 });
 
 app.listen(port, () => {

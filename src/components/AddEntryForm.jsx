@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import {
   Box,
-  FormControl,
   TextField,
   Button,
   Dialog,
@@ -18,6 +17,7 @@ const AddEntryForm = ({
   open,
   close,
   currentlySelected,
+  entryAccountNames,
   accountNames,
 }) => {
   const [formValue, setFormValue] = useState({
@@ -42,7 +42,7 @@ const AddEntryForm = ({
     console.log(formValue);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     axios.post('http://localhost:3000/entry', formValue)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
@@ -116,7 +116,6 @@ const AddEntryForm = ({
                 Credit
 
               </MenuItem>
-
             </Select>
           </Box>
           <Box>
@@ -136,8 +135,8 @@ const AddEntryForm = ({
                 Select an account
 
               </MenuItem>
-              {(currentlySelected === 'all')
-                ? accountArray.map((account) => (
+              {((currentlySelected === 'all') && (entryAccountNames))
+                ? entryAccountNames.map((account) => (
                   <MenuItem
                     key={account}
                     value={account}
@@ -151,6 +150,7 @@ const AddEntryForm = ({
                   >
                     {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
                   </MenuItem>
+
                 )}
             </Select>
           </Box>

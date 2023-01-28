@@ -7,6 +7,8 @@ import React from 'react'; import {
   Button,
 } from '@mui/material';
 
+import AddAccountButton from './common/AddAccountButton.jsx';
+
 const Sidebar = ({ accountNames, select, transactions }) => {
   const handleChange = (e) => {
     select(e.target.value);
@@ -16,6 +18,9 @@ const Sidebar = ({ accountNames, select, transactions }) => {
     style: 'currency',
     currency: 'USD',
   });
+
+  const accountValue = 'accounts';
+  const sidebarAccountNames = accountNames.filter((item) => item !== accountValue);
 
   const totalDebit = () => transactions.reduce((acc, curr) => {
     if (curr.type === 'debit') {
@@ -54,7 +59,7 @@ const Sidebar = ({ accountNames, select, transactions }) => {
           {/* <MenuItem value="all">All</MenuItem> */}
           {/* <MenuItem value="checking">Checking</MenuItem>
           <MenuItem value="saving">Saving</MenuItem> */}
-          {accountNames.map((account) => (
+          {sidebarAccountNames.map((account) => (
             <MenuItem
               key={account}
               value={account}
@@ -64,7 +69,13 @@ const Sidebar = ({ accountNames, select, transactions }) => {
           ))}
 
         </Select>
-        <Divider variant="middle" />
+        <AddAccountButton />
+        <Divider
+          variant="middle"
+          sx={{
+            my: 2,
+          }}
+        />
         <h2>Incoming</h2>
         {transactions
           ? USDollar.format(totalCredit())

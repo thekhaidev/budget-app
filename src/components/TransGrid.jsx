@@ -15,6 +15,7 @@ const TransGrid = ({
         <TransCard
           key={transaction.id}
           id={transaction.id}
+          type={transaction.type}
           amount={transaction.amount}
           note={transaction.note}
           time={transaction.time._seconds}

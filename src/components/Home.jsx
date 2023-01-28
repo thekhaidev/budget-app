@@ -17,6 +17,7 @@ const Home = () => {
   const [currentlySelected, setCurrentlySelected] = useState('all');
   const transactions = userData[currentlySelected];
   const accountNames = Object.keys(userData);
+  const entryAccountNames = userData.accounts;
 
   const handleLogout = () => {
     sessionStorage.removeItem('Auth Token');
@@ -61,7 +62,11 @@ const Home = () => {
           <h1>
             {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
           </h1>
-          <AddEntryButton currentlySelected={currentlySelected} accountNames={accountNames} />
+          <AddEntryButton
+            currentlySelected={currentlySelected}
+            entryAccountNames={entryAccountNames}
+            accountNames={accountNames}
+          />
         </Box>
         <Box sx={{
           mb: 2,
@@ -84,7 +89,7 @@ const Home = () => {
             transactions={transactions}
           />
         </Box>
-        <Button variant="outlined" onClick={() => console.log(transactions)}>Data</Button>
+        <Button variant="outlined" onClick={() => console.log(userData.accounts)}>Data</Button>
       </Box>
     </Box>
   );

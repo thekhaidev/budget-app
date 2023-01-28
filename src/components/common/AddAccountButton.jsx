@@ -3,9 +3,10 @@ import {
   Button,
   Box,
 } from '@mui/material';
-import AddEntryForm from '../AddEntryForm.jsx';
 
-const AddEntryButton = ({ currentlySelected, entryAccountNames, accountNames }) => {
+import AddAccountForm from '../AddAccountForm.jsx';
+
+const AddAccountButton = () => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -19,21 +20,16 @@ const AddEntryButton = ({ currentlySelected, entryAccountNames, accountNames }) 
   return (
     <Box>
       <Button
-        variant="outlined"
         onClick={handleClickOpen}
       >
         {' '}
-        Add Entry
-
+        Add Account
       </Button>
-      <AddEntryForm
+      <AddAccountForm
         open={open}
         close={handleClose}
-        currentlySelected={currentlySelected}
-        accountNames={accountNames}
-        entryAccountNames={entryAccountNames}
       />
     </Box>
   );
 };
-export default AddEntryButton;
+export default AddAccountButton;

@@ -15,8 +15,8 @@ const TransCard = ({
   account,
   time,
   id,
+  type,
   setUserData,
-  accountNames,
 }) => {
   const USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -41,6 +41,9 @@ const TransCard = ({
             {' '}
             {account[0].toUpperCase() + account.slice(1)}
           </Typography>
+          <Typography variant="body2">
+            {type}
+          </Typography>
           <Typography variant="body">
             {dateTime}
           </Typography>
@@ -50,6 +53,7 @@ const TransCard = ({
           <Typography variant="body2">
             {USDollar.format(amount)}
           </Typography>
+
         </CardContent>
         <CardActions sx={{
           justifyContent: 'center',
