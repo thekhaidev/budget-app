@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import {
   Box,
@@ -42,7 +43,9 @@ const AddEntryForm = ({
   };
 
   const handleSubmit = () => {
-    console.log(timeObj);
+    axios.post('http://localhost:3000/entry', formValue)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -52,25 +55,31 @@ const AddEntryForm = ({
       <DialogContent>
         <Box
           component="form"
+          onSubmit={handleSubmit}
           autoComplete="off"
           sx={{
             textAlign: 'center',
             mt: 3,
+            display: 'block',
           }}
         >
 
-          <FormControl sx={{ width: '25ch' }}>
+          <Box>
             <TextField
               id="note-input"
               name="note"
               label="Note"
               type="text"
+              required
               value={formValue.note}
               onChange={handleInputChange}
             />
+          </Box>
 
+          <Box>
             <TextField
               margin="normal"
+              required
               id="amount-input"
               name="amount"
               label="Amount"
@@ -78,45 +87,82 @@ const AddEntryForm = ({
               value={formValue.amount}
               onChange={handleInputChange}
             />
-            <Select
-              onChange={handleInputChange}
-              name="type"
-              defaultValue="select-an-account"
+          </Box>
+          <Select
+            required
+            value={formValue.type}
+            onChange={handleInputChange}
+            name="type"
+            displayEmpty
+          >
+            <MenuItem
+              value=""
+              sx={{
+                display: 'none',
+              }}
             >
-              <MenuItem
-                value="select-an-account"
-                sx={{
-                  display: 'none',
-                }}
-              >
-                Select an account
+              Transaction Type
+            </MenuItem>
+            <MenuItem
+              value="debit"
+            >
+              Debit
 
-              </MenuItem>
-              {(currentlySelected === 'all')
-                ? accountArray.map((account) => (
-                  <MenuItem
-                    key={account}
-                    value={account}
-                  >
-                    {account[0].toUpperCase() + account.slice(1)}
-                  </MenuItem>
-                ))
-                : (
-                  <MenuItem
-                    value={currentlySelected}
-                  >
-                    {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
-                  </MenuItem>
-                )}
-            </Select>
+            </MenuItem>
+            <MenuItem
+              value="credit"
+            >
+              Credit
 
-          </FormControl>
+            </MenuItem>
+
+          </Select>
+          {/* <Select
+            required
+            value={formValue.type}
+            onChange={handleInputChange}
+            name="type"
+            defaultValue="select"
+          >
+            <MenuItem
+              value="select"
+              sx={{
+                display: 'none',
+              }}
+            >
+              Select an account
+
+            </MenuItem>
+            {(currentlySelected === 'all')
+              ? accountArray.map((account) => (
+                <MenuItem
+                  key={account}
+                  value={account}
+                >
+                  {account[0].toUpperCase() + account.slice(1)}
+                </MenuItem>
+              ))
+              : (
+                <MenuItem
+                  value={currentlySelected}
+                >
+                  {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
+                </MenuItem>
+              )}
+          </Select> */}
+          <DialogActions>
+            <Button type="submit">Submit</Button>
+            <Button
+              onClick={close}
+            >
+              Cancel
+
+            </Button>
+          </DialogActions>
         </Box>
+
       </DialogContent>
-      <DialogActions>
-        <Button onClick={handleSubmit}>Date</Button>
-        <Button onClick={close}>Cancel</Button>
-      </DialogActions>
+
     </Dialog>
   );
 };

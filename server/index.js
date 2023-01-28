@@ -91,6 +91,13 @@ app.post('/delete', async (req, res) => {
     .then(() => res.status(200).send('ID Deleted'));
 });
 
+app.post('/entry', async (req, res) => {
+  const { account, id } = req.body;
+  console.log(req.body);
+
+  res.send('Cool');
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
 });
