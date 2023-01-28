@@ -4,12 +4,34 @@ import React from 'react'; import {
   Box,
   Select,
   MenuItem,
+  Button,
 } from '@mui/material';
 
-const Sidebar = ({ accountNames, select }) => {
+const Sidebar = ({ accountNames, select, transactions }) => {
   const handleChange = (e) => {
     select(e.target.value);
   };
+
+  const USDollar = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+
+  const totalDebit = () => transactions.reduce((acc, curr) => {
+    if (curr.type === 'debit') {
+      // eslint-disable-next-line no-param-reassign
+      acc += parseInt(curr.amount, 10);
+    }
+    return acc;
+  }, 0);
+
+  const totalCredit = () => transactions.reduce((acc, curr) => {
+    if (curr.type === 'credit') {
+      // eslint-disable-next-line no-param-reassign
+      acc += parseInt(curr.amount, 10);
+    }
+    return acc;
+  }, 0);
 
   return (
     <Box sx={{ display: { xs: 'none', md: 'block' } }}>
@@ -44,11 +66,17 @@ const Sidebar = ({ accountNames, select }) => {
         </Select>
         <Divider variant="middle" />
         <h2>Incoming</h2>
-        $23,000,000
+        {transactions
+          ? USDollar.format(totalCredit())
+          : USDollar.format(0)}
         <h2>Outgoing</h2>
-        $1
+        {transactions
+          ? USDollar.format(totalDebit())
+          : USDollar.format(0)}
         <h2>Balance</h2>
-        $22,999,999
+        {transactions
+          ? USDollar.format(totalCredit() - totalDebit())
+          : USDollar.format(0)}
       </Drawer>
     </Box>
   );
