@@ -89,6 +89,7 @@ const Home = () => {
             setUserData={setUserData}
             accountNames={accountNames}
             transactions={transactions}
+            entryAccountNames={entryAccountNames}
 
           />
         </Box>

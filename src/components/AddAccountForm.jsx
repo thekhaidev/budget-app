@@ -15,7 +15,6 @@ const AddAccountForm = ({
   open,
   close,
   setUserData,
-  currentlySelected,
 }) => {
   const [formValue, setFormValue] = useState({
     account: '',

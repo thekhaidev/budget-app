@@ -6,7 +6,9 @@ import {
   Button,
 } from '@mui/material';
 
-const DeleteButton = ({ account, id, setUserData }) => {
+const DeleteButton = ({
+  account, id, setUserData, entryAccountNames,
+}) => {
   const handleSubmit = () => {
     const postObj = {
       account,
@@ -27,6 +29,16 @@ const DeleteButton = ({ account, id, setUserData }) => {
         console.log(err);
       });
   };
+
+  if (entryAccountNames) {
+    return (
+      <Button
+        onClick={() => { console.log('test'); }}
+      >
+        Delete Account
+      </Button>
+    );
+  }
 
   return (
     <Button
