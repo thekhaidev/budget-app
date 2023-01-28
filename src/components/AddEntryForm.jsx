@@ -21,7 +21,7 @@ const AddEntryForm = ({
   accountNames,
 }) => {
   const [formValue, setFormValue] = useState({
-    note: '', amount: '', time: '', type: '',
+    note: '', amount: '', time: '', type: '', account: '',
   });
 
   const date = new Date().getTime() / 1000;
@@ -42,7 +42,7 @@ const AddEntryForm = ({
     console.log(formValue);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     axios.post('http://localhost:3000/entry', formValue)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
@@ -88,68 +88,72 @@ const AddEntryForm = ({
               onChange={handleInputChange}
             />
           </Box>
-          <Select
-            required
-            value={formValue.type}
-            onChange={handleInputChange}
-            name="type"
-            displayEmpty
-          >
-            <MenuItem
-              value=""
-              sx={{
-                display: 'none',
-              }}
+          <Box>
+            <Select
+              required
+              value={formValue.type}
+              onChange={handleInputChange}
+              name="type"
+              displayEmpty
             >
-              Transaction Type
-            </MenuItem>
-            <MenuItem
-              value="debit"
+              <MenuItem
+                value=""
+                sx={{
+                  display: 'none',
+                }}
+              >
+                Transaction Type
+              </MenuItem>
+              <MenuItem
+                value="debit"
+              >
+                Debit
+
+              </MenuItem>
+              <MenuItem
+                value="credit"
+              >
+                Credit
+
+              </MenuItem>
+
+            </Select>
+          </Box>
+          <Box>
+            <Select
+              required
+              value={formValue.account}
+              onChange={handleInputChange}
+              name="account"
+              displayEmpty
             >
-              Debit
+              <MenuItem
+                value=""
+                sx={{
+                  display: 'none',
+                }}
+              >
+                Select an account
 
-            </MenuItem>
-            <MenuItem
-              value="credit"
-            >
-              Credit
-
-            </MenuItem>
-
-          </Select>
-          {/* <Select
-            required
-            value={formValue.type}
-            onChange={handleInputChange}
-            name="type"
-            defaultValue="select"
-          >
-            <MenuItem
-              value="select"
-              sx={{
-                display: 'none',
-              }}
-            >
-              Select an account
-
-            </MenuItem>
-            {(currentlySelected === 'all')
-              ? accountArray.map((account) => (
-                <MenuItem
-                  key={account}
-                  value={account}
-                >
-                  {account[0].toUpperCase() + account.slice(1)}
-                </MenuItem>
-              ))
-              : (
-                <MenuItem
-                  value={currentlySelected}
-                >
-                  {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
-                </MenuItem>
-              )}
-          </Select> */}
+              </MenuItem>
+              {(currentlySelected === 'all')
+                ? accountArray.map((account) => (
+                  <MenuItem
+                    key={account}
+                    value={account}
+                  >
+                    {account[0].toUpperCase() + account.slice(1)}
+                  </MenuItem>
+                ))
+                : (
+                  <MenuItem
+                    value={currentlySelected}
+                  >
+                    {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
+                  </MenuItem>
+                )}
+            </Select>
+          </Box>
           <DialogActions>
             <Button type="submit">Submit</Button>
             <Button

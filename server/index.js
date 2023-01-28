@@ -92,10 +92,21 @@ app.post('/delete', async (req, res) => {
 });
 
 app.post('/entry', async (req, res) => {
-  const { account, id } = req.body;
-  console.log(req.body);
+  const {
+    type, amount, time, note, account,
+  } = req.body;
 
-  res.send('Cool');
+  const entryObj = {
+    type,
+    amount,
+    time,
+    note,
+  };
+
+  db.collection('users').doc('kim').collection('accounts').doc(account)
+    .collection('transactions')
+    .add(entryObj)
+    .then(() => res.status(200).send('Entry Added'));
 });
 
 app.listen(port, () => {
