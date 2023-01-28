@@ -9,7 +9,13 @@ import React from 'react'; import {
 
 import AddAccountButton from './common/AddAccountButton.jsx';
 
-const Sidebar = ({ accountNames, select, transactions }) => {
+const Sidebar = ({
+  accountNames,
+  select,
+  transactions,
+  setUserData,
+  currentlySelected,
+}) => {
   const handleChange = (e) => {
     select(e.target.value);
   };
@@ -69,7 +75,10 @@ const Sidebar = ({ accountNames, select, transactions }) => {
           ))}
 
         </Select>
-        <AddAccountButton />
+        <AddAccountButton
+          currentlySelected={currentlySelected}
+          setUserData={setUserData}
+        />
         <Divider
           variant="middle"
           sx={{

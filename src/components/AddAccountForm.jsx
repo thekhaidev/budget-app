@@ -14,6 +14,8 @@ import {
 const AddAccountForm = ({
   open,
   close,
+  setUserData,
+  currentlySelected,
 }) => {
   const [formValue, setFormValue] = useState({
     account: '',
@@ -32,6 +34,14 @@ const AddAccountForm = ({
     axios.post('http://localhost:3000/account', formValue)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
+
+    axios.get('http://localhost:3000/test')
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

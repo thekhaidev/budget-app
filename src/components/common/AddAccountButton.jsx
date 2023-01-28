@@ -6,7 +6,10 @@ import {
 
 import AddAccountForm from '../AddAccountForm.jsx';
 
-const AddAccountButton = () => {
+const AddAccountButton = ({
+  setUserData,
+  currentlySelected,
+}) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -28,6 +31,8 @@ const AddAccountButton = () => {
       <AddAccountForm
         open={open}
         close={handleClose}
+        currentlySelected={currentlySelected}
+        setUserData={setUserData}
       />
     </Box>
   );

@@ -84,9 +84,12 @@ const Home = () => {
             )
             : <CircularProgress />}
           <Sidebar
+            currentlySelected={currentlySelected}
             select={setCurrentlySelected}
+            setUserData={setUserData}
             accountNames={accountNames}
             transactions={transactions}
+
           />
         </Box>
         <Button variant="outlined" onClick={() => console.log(userData.accounts)}>Data</Button>
