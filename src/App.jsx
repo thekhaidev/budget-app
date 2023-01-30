@@ -26,7 +26,7 @@ const App = () => {
     <Box sx={{
       border: '1px solid red',
       height: '95vh',
-      overflow: 'hidden',
+      overflowY: 'scroll',
       textAlign: 'center',
     }}
     >

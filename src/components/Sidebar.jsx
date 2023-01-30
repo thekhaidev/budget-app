@@ -6,7 +6,6 @@ import React from 'react'; import {
   MenuItem,
 } from '@mui/material';
 
-import DeleteButton from './common/DeleteButton.jsx';
 import AddAccountButton from './common/AddAccountButton.jsx';
 
 const Sidebar = ({
@@ -15,7 +14,6 @@ const Sidebar = ({
   transactions,
   setUserData,
   currentlySelected,
-  entryAccountNames,
 }) => {
   const handleChange = (e) => {
     select(e.target.value);
@@ -80,7 +78,7 @@ const Sidebar = ({
           currentlySelected={currentlySelected}
           setUserData={setUserData}
         />
-        <DeleteButton entryAccountNames={entryAccountNames} />
+
         <Divider
           variant="middle"
           sx={{

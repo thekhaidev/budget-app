@@ -93,7 +93,7 @@ const Home = () => {
 
           />
         </Box>
-        <Button variant="outlined" onClick={() => console.log(userData.accounts)}>Data</Button>
+        <Button variant="outlined" onClick={() => console.log(userData)}>Data</Button>
       </Box>
     </Box>
   );

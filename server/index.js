@@ -46,7 +46,7 @@ app.get('/test', async (req, res) => {
     return acc;
   }, []);
 
-  (console.log('test ', test));
+  // (console.log('test ', test));
   // need to get all transactions for accounts
   const resObj = {};
   const all = [];
@@ -56,13 +56,21 @@ app.get('/test', async (req, res) => {
       const accTrans = await accounts.doc(currAcc).collection('transactions').get();
       accTrans.forEach((acc) => {
         const { id } = acc;
+
         const data = acc.data();
         data.id = id;
         data.account = currAcc;
 
+        // console.log(currAcc, '--> ', data);
+
         all.push(data);
         if (!resObj[currAcc]) {
           resObj[currAcc] = [data];
+
+          // if () {
+          //   // resObj[currAcc] = [emptyDataObj];
+          //   console.log('help');
+          // }
         } else {
           resObj[currAcc] = [...resObj[currAcc], data];
         }
@@ -90,6 +98,15 @@ app.post('/delete', async (req, res) => {
     .then(() => res.status(200).send('ID Deleted'));
 });
 
+app.post('/deleteaccount', async (req, res) => {
+  const { account } = req.body;
+  console.log(account);
+
+  db.collection('users').doc('kim').collection('accounts').doc(account)
+    .delete()
+    .then(() => res.status(200).send('Account Deleted'));
+});
+
 app.post('/entry', async (req, res) => {
   const {
     type, amount, time, note, account,
@@ -114,7 +131,14 @@ app.post('/account', async (req, res) => {
 
   db.collection('users').doc('kim').collection('accounts')
     .doc(account)
-    .set({})
+    .collection('transactions')
+    .add({
+      type: 'test',
+      amount: 16165,
+      note: 'test',
+      time: { _seconds: 16531616 },
+      isEmpty: true,
+    })
     .then(() => res.status(200).send('Account Added'));
 });
 
