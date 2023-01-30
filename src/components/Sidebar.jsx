@@ -61,6 +61,11 @@ const Sidebar = ({
           sx={{ width: '80%', marginBottom: '5%', alignSelf: 'center' }}
           onChange={handleChange}
         >
+          <MenuItem
+            key="all"
+            value="all"
+            display="hidden"
+          />
           {/* <MenuItem value="all">All</MenuItem> */}
           {/* <MenuItem value="checking">Checking</MenuItem>
           <MenuItem value="saving">Saving</MenuItem> */}
