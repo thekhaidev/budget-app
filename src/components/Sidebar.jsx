@@ -49,7 +49,6 @@ const Sidebar = ({
       <Drawer
         PaperProps={{
           sx: { width: '15%' },
-          boxSizing: 'border-box',
         }}
         variant="permanent"
         anchor="left"
