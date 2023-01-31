@@ -15,6 +15,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
   const [currentlySelected, setCurrentlySelected] = useState('all');
+  const [defaultSelect, setDefaultSelect] = useState(false);
   const transactions = userData[currentlySelected];
   const accountNames = Object.keys(userData);
   const entryAccountNames = userData.accounts;
@@ -80,6 +81,8 @@ const Home = () => {
                 account={currentlySelected}
                 setUserData={setUserData}
                 accountNames={accountNames}
+                setCurrentlySelected={setCurrentlySelected}
+                setDefaultSelecct={setDefaultSelect}
               />
             )
             : <CircularProgress />}
@@ -90,6 +93,7 @@ const Home = () => {
             accountNames={accountNames}
             transactions={transactions}
             entryAccountNames={entryAccountNames}
+            defaultSelect={defaultSelect}
 
           />
         </Box>

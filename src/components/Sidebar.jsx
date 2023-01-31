@@ -56,16 +56,36 @@ const Sidebar = ({
       >
 
         <h2>Accounts</h2>
+        <h3>Select</h3>
+
         <Select
           defaultValue="all"
-          sx={{ width: '80%', marginBottom: '5%', alignSelf: 'center' }}
+          sx={{
+            width: '80%',
+            marginBottom: '5%',
+            alignSelf: 'center',
+          }}
           onChange={handleChange}
         >
-          <MenuItem
+          {/* <MenuItem
             key="all"
             value="all"
-            display="hidden"
-          />
+            sx={{
+              display: 'none',
+            }}
+          >
+            Select
+
+          </MenuItem>
+          <MenuItem
+            key="select"
+            value="select"
+            sx={{
+              display: 'none',
+            }}
+          >
+            Select */}
+          {/* </MenuItem> */}
           {/* <MenuItem value="all">All</MenuItem> */}
           {/* <MenuItem value="checking">Checking</MenuItem>
           <MenuItem value="saving">Saving</MenuItem> */}

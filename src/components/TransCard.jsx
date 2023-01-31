@@ -17,6 +17,7 @@ const TransCard = ({
   id,
   type,
   setUserData,
+  setCurrentlySelected,
 }) => {
   const USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -66,7 +67,12 @@ const TransCard = ({
           >
             Edit
           </Button>
-          <DeleteButton account={account} id={id} setUserData={setUserData} />
+          <DeleteButton
+            account={account}
+            id={id}
+            setUserData={setUserData}
+            setCurrentlySelected={setCurrentlySelected}
+          />
         </CardActions>
 
       </Card>

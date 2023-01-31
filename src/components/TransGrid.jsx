@@ -8,6 +8,7 @@ const TransGrid = ({
   transactions,
   setUserData,
   accountNames,
+  setCurrentlySelected,
 }) => (
   <Grid container spacing={0}>
     {transactions.sort((a, b) => new Date(b.time._seconds) - new Date(a.time._seconds))
@@ -22,6 +23,7 @@ const TransGrid = ({
           account={transaction.account}
           setUserData={setUserData}
           accountNames={accountNames}
+          setCurrentlySelected={setCurrentlySelected}
         />
 
       )) }
