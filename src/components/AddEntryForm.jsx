@@ -17,7 +17,6 @@ const AddEntryForm = ({
   open,
   close,
   currentlySelected,
-  entryAccountNames,
   accountNames,
 }) => {
   const [formValue, setFormValue] = useState({
@@ -135,8 +134,8 @@ const AddEntryForm = ({
                 Select an account
 
               </MenuItem>
-              {((currentlySelected === 'all') && (entryAccountNames))
-                ? entryAccountNames.map((account) => (
+              {(currentlySelected === 'all')
+                ? accountArray.map((account) => (
                   <MenuItem
                     key={account}
                     value={account}

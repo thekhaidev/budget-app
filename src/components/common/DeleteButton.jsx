@@ -5,9 +5,6 @@ import {
 
   Button,
 } from '@mui/material';
-import {
-  useNavigate,
-} from 'react-router-dom';
 
 const DeleteButton = ({
   account,
@@ -15,13 +12,13 @@ const DeleteButton = ({
   setUserData,
   setCurrentlySelected,
 }) => {
-  const navigate = useNavigate();
   const handleSubmit = () => {
     const postObj = {
       account,
       id,
     };
     setCurrentlySelected('all');
+
     axios.post('http://localhost:3000/delete', postObj)
       .then((res) => {
         console.log(res.data);
@@ -32,7 +29,7 @@ const DeleteButton = ({
     axios.get('http://localhost:3000/test')
       .then((res) => {
         setUserData(res.data);
-      }).then(() => navigate('/home'))
+      })
       .catch((err) => {
         console.log(err);
       });

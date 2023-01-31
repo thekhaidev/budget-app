@@ -125,22 +125,22 @@ app.post('/entry', async (req, res) => {
     .then(() => res.status(200).send('Entry Added'));
 });
 
-app.post('/account', async (req, res) => {
-  const { account } = req.body;
-  console.log(account);
+// app.post('/account', async (req, res) => {
+//   const { account } = req.body;
+//   console.log(account);
 
-  db.collection('users').doc('kim').collection('accounts')
-    .doc(account)
-    .collection('transactions')
-    .add({
-      type: 'test',
-      amount: 16165,
-      note: 'test',
-      time: { _seconds: 16531616 },
-      isEmpty: true,
-    })
-    .then(() => res.status(200).send('Account Added'));
-});
+//   db.collection('users').doc('kim').collection('accounts')
+//     .doc(account)
+//     .collection('transactions')
+//     .add({
+//       type: 'test',
+//       amount: 16165,
+//       note: 'test',
+//       time: { _seconds: 16531616 },
+//       isEmpty: true,
+//     })
+//     .then(() => res.status(200).send('Account Added'));
+// });
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
