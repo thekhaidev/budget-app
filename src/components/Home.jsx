@@ -17,7 +17,7 @@ const Home = () => {
   const [currentlySelected, setCurrentlySelected] = useState('all');
   const [defaultSelect, setDefaultSelect] = useState(false);
   const transactions = userData[currentlySelected];
-  const accountNames = Object.keys(userData);
+  const accountNames = Object.keys(userData).sort();
   const entryAccountNames = userData.accounts;
 
   const handleLogout = () => {
@@ -33,7 +33,7 @@ const Home = () => {
           setUserData(res.data);
         })
         .catch((err) => {
-          console.log(err);
+          throw new Error(err);
         });
       navigate('/home');
     }
