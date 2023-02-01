@@ -55,8 +55,24 @@ const Sidebar = ({
         anchor="left"
       >
 
-        <h2>Accounts</h2>
-        <h3>Select</h3>
+        <Typography
+          variant="h4"
+          sx={{
+            mt: 3,
+          }}
+        >
+          Accounts
+        </Typography>
+
+        <Typography
+          variant="body2"
+          fontSize="30px"
+          sx={{
+            mb: 1,
+          }}
+        >
+          Select
+        </Typography>
 
         <Select
           defaultValue="all"
