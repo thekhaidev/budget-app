@@ -60,10 +60,17 @@ const TransCard = ({
             <Typography variant="h4">
               {note}
             </Typography>
-            <Typography variant="h4">
-              {USDollar.format(amount)}
-            </Typography>
-
+            {type === 'credit'
+              ? (
+                <Typography variant="h4">
+                  {USDollar.format(amount)}
+                </Typography>
+              )
+              : (
+                <Typography variant="h4">
+                  {USDollar.format(amount * -1)}
+                </Typography>
+              )}
           </CardContent>
           <CardActions sx={{
             justifyContent: 'center',
