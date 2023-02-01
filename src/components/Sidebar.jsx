@@ -4,6 +4,7 @@ import React from 'react'; import {
   Box,
   Select,
   MenuItem,
+  Typography,
 } from '@mui/material';
 
 import AddAccountButton from './common/AddAccountButton.jsx';
@@ -66,28 +67,6 @@ const Sidebar = ({
           }}
           onChange={handleChange}
         >
-          {/* <MenuItem
-            key="all"
-            value="all"
-            sx={{
-              display: 'none',
-            }}
-          >
-            Select
-
-          </MenuItem>
-          <MenuItem
-            key="select"
-            value="select"
-            sx={{
-              display: 'none',
-            }}
-          >
-            Select */}
-          {/* </MenuItem> */}
-          {/* <MenuItem value="all">All</MenuItem> */}
-          {/* <MenuItem value="checking">Checking</MenuItem>
-          <MenuItem value="saving">Saving</MenuItem> */}
           {sidebarAccountNames.map((account) => (
             <MenuItem
               key={account}
@@ -109,18 +88,45 @@ const Sidebar = ({
             my: 2,
           }}
         />
-        <h2>Incoming</h2>
-        {transactions
-          ? USDollar.format(totalCredit())
-          : USDollar.format(0)}
-        <h2>Outgoing</h2>
-        {transactions
-          ? USDollar.format(totalDebit())
-          : USDollar.format(0)}
-        <h2>Balance</h2>
-        {transactions
-          ? USDollar.format(totalCredit() - totalDebit())
-          : USDollar.format(0)}
+        <Typography
+          variant="h4"
+        >
+          Incoming
+        </Typography>
+        <Typography
+          variant="h5"
+          sx={{
+            mb: 2,
+          }}
+        >
+          {transactions
+            ? USDollar.format(totalCredit())
+            : USDollar.format(0)}
+        </Typography>
+        <Typography variant="h4">
+          Outgoing
+        </Typography>
+        <Typography
+          variant="h5"
+          sx={{
+            mb: 2,
+          }}
+        >
+          {transactions
+            ? USDollar.format(totalDebit())
+            : USDollar.format(0)}
+        </Typography>
+        <Typography variant="h4">
+          Balance
+        </Typography>
+
+        <Typography
+          variant="h5"
+        >
+          {transactions
+            ? USDollar.format(totalCredit() - totalDebit())
+            : USDollar.format(0)}
+        </Typography>
       </Drawer>
     </Box>
   );
