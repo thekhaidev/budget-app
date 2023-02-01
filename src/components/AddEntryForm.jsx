@@ -44,7 +44,9 @@ const AddEntryForm = ({
   const handleSubmit = () => {
     axios.post('http://localhost:3000/entry', formValue)
       .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throw new Error(err);
+      });
   };
 
   return (
