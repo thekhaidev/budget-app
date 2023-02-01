@@ -29,7 +29,9 @@ const AddEntryForm = ({
   };
 
   const allValue = 'all';
-  const accountArray = accountNames.filter((item) => item !== allValue);
+  const accountsVal = 'accounts';
+  const filter1 = accountNames.filter((item) => item !== accountsVal);
+  const accountArray = filter1.filter((item) => item !== allValue);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

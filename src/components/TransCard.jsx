@@ -8,8 +8,8 @@ import {
   Button,
   Slide,
 } from '@mui/material';
-import { ThemeConsumer } from 'styled-components';
 import DeleteButton from './common/DeleteButton.jsx';
+import MainTheme from './common/styles/MainTheme.js';
 
 const TransCard = ({
   amount,
@@ -35,52 +35,6 @@ const TransCard = ({
 
   const dateTime = new Date(time * 1000).toDateString('en-us', { timeZone: 'CST' });
 
-  // if (slide) {
-  //   return (
-  //     <Slide
-  //       direction="right"
-  //       in={slide}
-  //     >
-  //       <Grid
-  //         item
-  //         xs={12}
-  //         md={4}
-  //       >
-
-  //         <Card
-  //           sx={{
-  //             mr: 2,
-  //             border: '1px solid black',
-  //           }}
-  //         >
-  //           <CardContent>
-  //             <h1>Test</h1>
-
-  //           </CardContent>
-  //           <CardActions sx={{
-  //             justifyContent: 'center',
-  //           }}
-  //           >
-  //             <Button
-  //               variant="outline"
-  //               size="small"
-  //               onClick={handleSlide}
-  //             >
-  //               Details
-  //             </Button>
-  //             <DeleteButton
-  //               account={account}
-  //               id={id}
-  //               setUserData={setUserData}
-  //               setCurrentlySelected={setCurrentlySelected}
-  //             />
-  //           </CardActions>
-  //         </Card>
-  //       </Grid>
-  //     </Slide>
-  //   );
-  // }
-
   return (
     <Grid
       item
@@ -103,25 +57,10 @@ const TransCard = ({
           }}
         >
           <CardContent>
-            <Typography
-              sx={{ fontSize: 14 }}
-              variant="h5"
-              gutterBottom
-            >
-              Account:
-              {' '}
-              {account[0].toUpperCase() + account.slice(1)}
-            </Typography>
-            <Typography variant="body2">
-              {type}
-            </Typography>
-            <Typography variant="body2">
-              {dateTime}
-            </Typography>
-            <Typography variant="h5">
+            <Typography variant="h4">
               {note}
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="h4">
               {USDollar.format(amount)}
             </Typography>
 
@@ -129,14 +68,17 @@ const TransCard = ({
           <CardActions sx={{
             justifyContent: 'center',
             border: '1px solid black',
-            mt: 1,
-
+            mt: 5,
+            backgroundColor: MainTheme.palette.primary.main,
           }}
           >
             <Button
               variant="outline"
               size="small"
               onClick={handleSlide}
+              sx={{
+                color: MainTheme.palette.secondary.main,
+              }}
             >
               Details
             </Button>
@@ -166,7 +108,21 @@ const TransCard = ({
           }}
         >
           <CardContent>
-            <h1>Test</h1>
+            <Typography
+              sx={{ fontSize: 14 }}
+              variant="h4"
+              gutterBottom
+            >
+              Account:
+              {' '}
+              {account[0].toUpperCase() + account.slice(1)}
+            </Typography>
+            <Typography variant="h4">
+              {dateTime}
+            </Typography>
+            <Typography variant="h4">
+              {type}
+            </Typography>
 
           </CardContent>
           <CardActions
@@ -175,7 +131,8 @@ const TransCard = ({
               border: '1px solid black',
               bottom: '0px',
               left: '0px',
-              mt: 6,
+              mt: 2,
+              backgroundColor: MainTheme.palette.primary.main,
             }}
             position="absolute"
 
@@ -184,6 +141,9 @@ const TransCard = ({
               variant="outline"
               size="small"
               onClick={handleSlide}
+              sx={{
+                color: MainTheme.palette.secondary.main,
+              }}
             >
               Details
             </Button>
