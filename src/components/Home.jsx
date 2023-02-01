@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Box,
   CircularProgress,
+  Typography,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -59,9 +60,11 @@ const Home = () => {
           mb: 2,
         }}
         >
-          <h1>
+          <Typography variant="h2">
+
             {currentlySelected[0].toUpperCase() + currentlySelected.slice(1)}
-          </h1>
+
+          </Typography>
           <AddEntryButton
             currentlySelected={currentlySelected}
             entryAccountNames={entryAccountNames}
