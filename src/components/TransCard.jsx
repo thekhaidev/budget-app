@@ -128,7 +128,7 @@ const TransCard = ({
               {dateTime}
             </Typography>
             <Typography variant="h4">
-              {type}
+              {type[0].toUpperCase() + type.slice(1)}
             </Typography>
 
           </CardContent>
