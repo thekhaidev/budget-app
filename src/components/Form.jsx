@@ -66,16 +66,20 @@ const Form = ({ title }) => {
     <Container
       sx={{
         textAlign: 'center',
-        border: '1px solid black',
         mt: 10,
         width: { md: '75%' },
+        border: '1px solid black',
       }}
       fixed
     >
-      <Box component="form" noValidate autoComplete="off">
+      <Box
+        component="form"
+        noValidate
+        autoComplete="off"
+      >
         <Box sx={{
-          border: '1px dotted green',
           mt: 10,
+
         }}
         >
           <h1>Kimmy&apos;s Checkbook</h1>
