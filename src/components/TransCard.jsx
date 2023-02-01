@@ -63,6 +63,7 @@ const TransCard = ({
             {type === 'credit'
               ? (
                 <Typography variant="h4">
+                  +
                   {USDollar.format(amount)}
                 </Typography>
               )
