@@ -50,6 +50,7 @@ const Home = () => {
       mt: 10,
       ml: { md: '19.5%' },
       width: { md: '75%' },
+      height: '100%',
     }}
     >
 

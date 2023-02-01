@@ -27,8 +27,7 @@ const App = () => {
   return (
     <ThemeProvider theme={MainTheme}>
       <Box sx={{
-        border: '1px solid red',
-        height: '95vh',
+        height: '100%',
         overflowY: 'scroll',
         textAlign: 'center',
       }}
