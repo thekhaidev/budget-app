@@ -46,7 +46,7 @@ const Home = () => {
   return (
     <Box sx={{
       textAlign: 'center',
-      border: '1px solid black',
+      // border: '1px solid black',
       mt: 10,
       ml: { md: '19.5%' },
       width: { md: '75%' },
@@ -97,7 +97,7 @@ const Home = () => {
 
           />
         </Box>
-        <Button variant="outlined" onClick={() => console.log(userData)}>Data</Button>
+        {/* <Button variant="outlined" onClick={() => console.log(userData)}>Data</Button> */}
       </Box>
     </Box>
   );

@@ -28,9 +28,8 @@ const Topbar = ({ logout }) => {
       sx={{
         flexGrow: 1,
         width: { sx: '100%', md: '84.8%' },
-        backgroundColor: { xs: 'red', md: 'green' },
       }}
-      color="transparent"
+      color="primary"
     >
       <Toolbar>
         <Typography

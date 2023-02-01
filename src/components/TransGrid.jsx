@@ -11,7 +11,7 @@ const TransGrid = ({
   accountNames,
   setCurrentlySelected,
 }) => (
-  <Grid container spacing={0}>
+  <Grid container spacing={2}>
     {transactions.sort((a, b) => new Date(b.time._seconds) - new Date(a.time._seconds))
       .map((transaction) => (
         <TransCard

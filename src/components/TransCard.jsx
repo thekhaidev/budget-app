@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Grid,
   Card,
@@ -6,6 +6,7 @@ import {
   CardContent,
   Typography,
   Button,
+  Slide,
 } from '@mui/material';
 import DeleteButton from './common/DeleteButton.jsx';
 
@@ -19,6 +20,13 @@ const TransCard = ({
   setUserData,
   setCurrentlySelected,
 }) => {
+  const [slide, setSlide] = useState(false);
+  const [mainCard, setMainCard] = useState(true);
+
+  const handleSlide = () => {
+    setSlide(!slide);
+    setMainCard(!mainCard);
+  };
   const USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -26,57 +34,154 @@ const TransCard = ({
 
   const dateTime = new Date(time * 1000).toDateString('en-us', { timeZone: 'CST' });
 
+  // if (slide) {
+  //   return (
+  //     <Slide
+  //       direction="right"
+  //       in={slide}
+  //     >
+  //       <Grid
+  //         item
+  //         xs={12}
+  //         md={4}
+  //       >
+
+  //         <Card
+  //           sx={{
+  //             mr: 2,
+  //             border: '1px solid black',
+  //           }}
+  //         >
+  //           <CardContent>
+  //             <h1>Test</h1>
+
+  //           </CardContent>
+  //           <CardActions sx={{
+  //             justifyContent: 'center',
+  //           }}
+  //           >
+  //             <Button
+  //               variant="outline"
+  //               size="small"
+  //               onClick={handleSlide}
+  //             >
+  //               Details
+  //             </Button>
+  //             <DeleteButton
+  //               account={account}
+  //               id={id}
+  //               setUserData={setUserData}
+  //               setCurrentlySelected={setCurrentlySelected}
+  //             />
+  //           </CardActions>
+  //         </Card>
+  //       </Grid>
+  //     </Slide>
+  //   );
+  // }
+
   return (
     <Grid
       item
       xs={12}
       md={4}
-      sx={{
-        border: '1px solid black',
-      }}
     >
-      <Card>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Account:
-            {' '}
-            {account[0].toUpperCase() + account.slice(1)}
-          </Typography>
-          <Typography variant="body2">
-            {type}
-          </Typography>
-          <Typography variant="body">
-            {dateTime}
-          </Typography>
-          <Typography variant="h5">
-            {note}
-          </Typography>
-          <Typography variant="body2">
-            {USDollar.format(amount)}
-          </Typography>
+      <Slide
+        direction="up"
+        in={mainCard}
+        mountOnEnter
+        unmountOnExit
+      >
 
-        </CardContent>
-        <CardActions sx={{
-          justifyContent: 'center',
-        }}
+        <Card
+          sx={{
+            mr: 2,
+            border: '1px solid black',
+          }}
         >
-          <Button
-            variant="outline"
-            size="small"
-            onClick={() => console.log(id)}
-          >
-            Edit
-          </Button>
-          <DeleteButton
-            account={account}
-            id={id}
-            setUserData={setUserData}
-            setCurrentlySelected={setCurrentlySelected}
-          />
-        </CardActions>
+          <CardContent>
+            <Typography
+              sx={{ fontSize: 14 }}
+              variant="h5"
+              gutterBottom
+            >
+              Account:
+              {' '}
+              {account[0].toUpperCase() + account.slice(1)}
+            </Typography>
+            <Typography variant="body2">
+              {type}
+            </Typography>
+            <Typography variant="body2">
+              {dateTime}
+            </Typography>
+            <Typography variant="h5">
+              {note}
+            </Typography>
+            <Typography variant="body2">
+              {USDollar.format(amount)}
+            </Typography>
 
-      </Card>
+          </CardContent>
+          <CardActions sx={{
+            justifyContent: 'center',
+          }}
+          >
+            <Button
+              variant="outline"
+              size="small"
+              onClick={handleSlide}
+            >
+              Details
+            </Button>
+            <DeleteButton
+              account={account}
+              id={id}
+              setUserData={setUserData}
+              setCurrentlySelected={setCurrentlySelected}
+            />
+          </CardActions>
+        </Card>
+      </Slide>
+      <Slide
+        direction="down"
+        in={slide}
+        mountOnEnter
+        unmountOnExit
+      >
+
+        <Card
+          sx={{
+            mr: 2,
+            border: '1px solid black',
+          }}
+        >
+          <CardContent>
+            <h1>Test</h1>
+
+          </CardContent>
+          <CardActions sx={{
+            justifyContent: 'center',
+          }}
+          >
+            <Button
+              variant="outline"
+              size="small"
+              onClick={handleSlide}
+            >
+              Details
+            </Button>
+            <DeleteButton
+              account={account}
+              id={id}
+              setUserData={setUserData}
+              setCurrentlySelected={setCurrentlySelected}
+            />
+          </CardActions>
+        </Card>
+      </Slide>
     </Grid>
+
   );
 };
 export default TransCard;
