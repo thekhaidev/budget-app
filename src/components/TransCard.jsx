@@ -8,6 +8,7 @@ import {
   Button,
   Slide,
 } from '@mui/material';
+import { ThemeConsumer } from 'styled-components';
 import DeleteButton from './common/DeleteButton.jsx';
 
 const TransCard = ({
@@ -94,9 +95,11 @@ const TransCard = ({
       >
 
         <Card
+          position="relative"
           sx={{
             mr: 2,
             border: '1px solid black',
+            height: '22vh',
           }}
         >
           <CardContent>
@@ -125,6 +128,9 @@ const TransCard = ({
           </CardContent>
           <CardActions sx={{
             justifyContent: 'center',
+            border: '1px solid black',
+            mt: 1,
+
           }}
           >
             <Button
@@ -151,18 +157,28 @@ const TransCard = ({
       >
 
         <Card
+          position="relative"
           sx={{
             mr: 2,
             border: '1px solid black',
+            height: '22vh',
+
           }}
         >
           <CardContent>
             <h1>Test</h1>
 
           </CardContent>
-          <CardActions sx={{
-            justifyContent: 'center',
-          }}
+          <CardActions
+            sx={{
+              justifyContent: 'center',
+              border: '1px solid black',
+              bottom: '0px',
+              left: '0px',
+              mt: 6,
+            }}
+            position="absolute"
+
           >
             <Button
               variant="outline"
