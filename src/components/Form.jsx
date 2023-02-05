@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import {
   Box,
-  FormControl,
   TextField,
   Button,
   Container,
+  Typography,
 } from '@mui/material';
 import {
   useNavigate,
@@ -79,13 +79,26 @@ const Form = ({ title }) => {
       >
         <Box sx={{
           mt: 10,
+          mb: 2,
 
         }}
         >
-          <h1>Kimmy&apos;s Checkbook</h1>
+          <Typography
+            variant="h3"
+          >
+            Kimmy&apos;s Checkbook
+          </Typography>
         </Box>
-        <h3>{title}</h3>
-        <FormControl sx={{ width: '25ch' }}>
+        <Typography
+          variant="h5"
+          sx={{
+            mb: 2,
+          }}
+        >
+          {title}
+        </Typography>
+
+        <Box>
           <TextField
             id="email-input"
             name="email"
@@ -94,7 +107,9 @@ const Form = ({ title }) => {
             value={formValue.email}
             onChange={handleInputChange}
           />
+        </Box>
 
+        <Box>
           <TextField
             margin="normal"
             id="password-input"
@@ -104,14 +119,19 @@ const Form = ({ title }) => {
             value={formValue.password}
             onChange={handleInputChange}
           />
-        </FormControl>
+        </Box>
+        <Box>
+          <Button onClick={() => handleAction(title)}>{title}</Button>
+        </Box>
+      </Box>
 
-      </Box>
-      <Box>
-        <Button onClick={() => handleAction(title)}>{title}</Button>
-      </Box>
-      <Box component="span">
-        Register for account
+      <Box sx={{
+        mb: 2,
+      }}
+      >
+        <Typography variant="body2">
+          Register for account
+        </Typography>
       </Box>
 
     </Container>

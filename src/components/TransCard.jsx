@@ -53,7 +53,7 @@ const TransCard = ({
           sx={{
             mr: 2,
             border: '1px solid black',
-            height: '22vh',
+            height: { md: '100%', lg: '100%' },
           }}
         >
           <CardContent>
@@ -111,7 +111,7 @@ const TransCard = ({
           sx={{
             mr: 2,
             border: '1px solid black',
-            height: '22vh',
+            height: { md: '100%', lg: '100%' },
 
           }}
         >
