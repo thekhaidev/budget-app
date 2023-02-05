@@ -85,9 +85,6 @@ const TransCard = ({
               variant="outline"
               size="small"
               onClick={handleSlide}
-              sx={{
-                color: theme.palette.secondary.main,
-              }}
             >
               Details
             </Button>

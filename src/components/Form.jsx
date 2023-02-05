@@ -18,7 +18,7 @@ import {
 import app from '../../firebase.js';
 
 const Form = ({ title }) => {
-  const [formValue, setFormValue] = useState({ email: '', password: '' });
+  const [formValue, setFormValue] = useState({ email: 'test@test.com', password: 'test123' });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const Form = ({ title }) => {
         navigate('/home');
         // console.log(userCreds._tokenResponse.refreshToken);
       }).catch((err) => {
-        console.log(err);
+        throw new Error(err);
       });
     }
     // console.log(formValue.email);
@@ -108,7 +108,7 @@ const Form = ({ title }) => {
             name="email"
             label="Email"
             type="text"
-            value={formValue.email}
+            defaultValue="test@test.com"
             onChange={handleInputChange}
           />
         </Box>
@@ -119,8 +119,8 @@ const Form = ({ title }) => {
             id="password-input"
             name="password"
             label="Password"
-            type="text"
-            value={formValue.password}
+            type="password"
+            defaultValue="test123"
             onChange={handleInputChange}
           />
         </Box>
