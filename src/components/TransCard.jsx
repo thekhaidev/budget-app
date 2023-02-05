@@ -7,9 +7,9 @@ import {
   Typography,
   Button,
   Slide,
+  useTheme,
 } from '@mui/material';
 import DeleteButton from './common/DeleteButton.jsx';
-import mainTheme from './common/styles/mainTheme.js';
 
 const TransCard = ({
   amount,
@@ -23,6 +23,7 @@ const TransCard = ({
 }) => {
   const [slide, setSlide] = useState(false);
   const [mainCard, setMainCard] = useState(true);
+  const theme = useTheme();
 
   const handleSlide = () => {
     setSlide(!slide);
@@ -77,7 +78,7 @@ const TransCard = ({
             justifyContent: 'center',
             border: '1px solid black',
             mt: 5,
-            backgroundColor: mainTheme.palette.primary.main,
+            backgroundColor: theme.palette.primary.main,
           }}
           >
             <Button
@@ -85,7 +86,7 @@ const TransCard = ({
               size="small"
               onClick={handleSlide}
               sx={{
-                color: mainTheme.palette.secondary.main,
+                color: theme.palette.secondary.main,
               }}
             >
               Details
@@ -140,7 +141,7 @@ const TransCard = ({
               bottom: '0px',
               left: '0px',
               mt: 2,
-              backgroundColor: mainTheme.palette.primary.main,
+              backgroundColor: theme.palette.primary.main,
             }}
             position="absolute"
 
@@ -150,7 +151,7 @@ const TransCard = ({
               size="small"
               onClick={handleSlide}
               sx={{
-                color: mainTheme.palette.secondary.main,
+                color: theme.palette.secondary.main,
               }}
             >
               Details

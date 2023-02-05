@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import {
   Box,
   ThemeProvider,
+  CssBaseline,
 } from '@mui/material';
 import {
   Routes,
@@ -11,7 +12,8 @@ import {
 } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import Form from './components/Form.jsx';
-import MainTheme from './components/common/styles/mainTheme.js';
+import mainTheme from './components/common/styles/mainTheme.js';
+// import darkTheme from './components/common/styles/darkTheme.js';
 
 const App = () => {
   const navigate = useNavigate();
@@ -25,7 +27,8 @@ const App = () => {
   }, []);
 
   return (
-    <ThemeProvider theme={MainTheme}>
+    <ThemeProvider theme={mainTheme}>
+      <CssBaseline />
       <Box sx={{
         height: '100%',
         overflowY: 'scroll',
