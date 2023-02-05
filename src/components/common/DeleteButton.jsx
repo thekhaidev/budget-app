@@ -5,7 +5,7 @@ import {
 
   Button,
 } from '@mui/material';
-import MainTheme from './styles/mainTheme.js';
+import mainTheme from './styles/mainTheme.js';
 
 const DeleteButton = ({
   account,
@@ -42,7 +42,7 @@ const DeleteButton = ({
       size="small"
       onClick={handleSubmit}
       sx={{
-        color: MainTheme.palette.secondary.main,
+        color: mainTheme.palette.secondary.main,
       }}
     >
       Delete

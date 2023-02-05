@@ -3,6 +3,13 @@ import { createTheme } from '@mui/material/styles';
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+    type: 'dark',
+    primary: {
+      main: '#E00F41',
+    },
+    secondary: {
+      main: '#FCF6F5FF',
+    },
   },
   typography: {
     fontFamily: "'Montserrat','Lora', sans-serif, serif ",
