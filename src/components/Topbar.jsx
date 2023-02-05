@@ -77,19 +77,36 @@ const Topbar = ({
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem>
-            Dark Mode
+          <MenuItem
+            sx={{
+              justifyContent: 'center',
+            }}
+            onClick={handleClose}
+          >
+            My account
 
           </MenuItem>
-          <MenuItem>
+          <MenuItem
+            sx={{
+              justifyContent: 'center',
+            }}
+          >
+            Dark Mode
             <Switch
               checked={darkMode}
               onChange={selectDarkMode}
             />
-            {' '}
+
           </MenuItem>
-          <MenuItem onClick={logout}>Logout</MenuItem>
+          <MenuItem
+            sx={{
+              justifyContent: 'center',
+            }}
+            onClick={logout}
+          >
+            Logout
+
+          </MenuItem>
 
         </Menu>
       </Toolbar>
