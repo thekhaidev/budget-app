@@ -11,7 +11,10 @@ import Topbar from './Topbar.jsx';
 import TransGrid from './TransGrid.jsx';
 import AddEntryButton from './common/AddEntryButton.jsx';
 
-const Home = () => {
+const Home = ({
+  setDarkMode,
+  darkMode,
+}) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
   const [currentlySelected, setCurrentlySelected] = useState('all');
@@ -55,7 +58,11 @@ const Home = () => {
     >
 
       <Box component="div">
-        <Topbar logout={handleLogout} />
+        <Topbar
+          logout={handleLogout}
+          setDarkMode={setDarkMode}
+          darkMode={darkMode}
+        />
 
         <Box sx={{
           mb: 2,

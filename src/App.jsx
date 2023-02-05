@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   Box,
@@ -13,10 +13,11 @@ import {
 import Home from './components/Home.jsx';
 import Form from './components/Form.jsx';
 import mainTheme from './components/common/styles/mainTheme.js';
-// import darkTheme from './components/common/styles/darkTheme.js';
+import darkTheme from './components/common/styles/darkTheme.js';
 
 const App = () => {
   const navigate = useNavigate();
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     const authToken = sessionStorage.getItem('Auth Token');
@@ -27,7 +28,7 @@ const App = () => {
   }, []);
 
   return (
-    <ThemeProvider theme={mainTheme}>
+    <ThemeProvider theme={darkMode ? darkTheme : mainTheme}>
       <CssBaseline />
       <Box sx={{
         height: '100%',
@@ -39,8 +40,8 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Form title="Log In" />} />
           {/* <Route path="/register" element={<Form title="Register" />} /> */}
-          <Route path="/home" element={<Home />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home setDarkMode={setDarkMode} darkMode={darkMode} />} />
+          <Route path="/" element={<Home setDarkMode={setDarkMode} darkMode={darkMode} />} />
         </Routes>
 
       </Box>

@@ -7,11 +7,16 @@ import {
   Menu,
   MenuItem,
   IconButton,
+  Switch,
 
 } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
-const Topbar = ({ logout }) => {
+const Topbar = ({
+  logout,
+  setDarkMode,
+  darkMode,
+}) => {
   const todayDate = new Date().toLocaleDateString('en-US');
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -21,6 +26,10 @@ const Topbar = ({ logout }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const selectDarkMode = () => {
+    setDarkMode(!darkMode);
   };
 
   return (
@@ -69,7 +78,19 @@ const Topbar = ({ logout }) => {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>My account</MenuItem>
+          <MenuItem>
+            Dark Mode
+
+          </MenuItem>
+          <MenuItem>
+            <Switch
+              checked={darkMode}
+              onChange={selectDarkMode}
+            />
+            {' '}
+          </MenuItem>
           <MenuItem onClick={logout}>Logout</MenuItem>
+
         </Menu>
       </Toolbar>
     </AppBar>
