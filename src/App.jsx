@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import Form from './components/Form.jsx';
-import MainTheme from './components/common/styles/MainTheme.js';
+import MainTheme from './components/common/styles/mainTheme.js';
 
 const App = () => {
   const navigate = useNavigate();

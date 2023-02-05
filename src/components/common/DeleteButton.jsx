@@ -5,7 +5,7 @@ import {
 
   Button,
 } from '@mui/material';
-import MainTheme from './styles/MainTheme.js';
+import MainTheme from './styles/mainTheme.js';
 
 const DeleteButton = ({
   account,
