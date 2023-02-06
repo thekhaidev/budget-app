@@ -16,9 +16,20 @@ const Topbar = ({
   logout,
   setDarkMode,
   darkMode,
+  type,
 }) => {
   const todayDate = new Date().toLocaleDateString('en-US');
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const regularStyle = {
+    flexGrow: 1,
+    width: { sx: '100%', md: '84.8%' },
+  };
+
+  const profileStyle = {
+    flexGrow: 1,
+    width: '100%',
+  };
 
   const handleMenu = (e) => {
     setAnchorEl(e.currentTarget);
@@ -34,10 +45,9 @@ const Topbar = ({
 
   return (
     <AppBar
-      sx={{
-        flexGrow: 1,
-        width: { sx: '100%', md: '84.8%' },
-      }}
+      sx={type === 'profile'
+        ? profileStyle
+        : regularStyle}
       color="primary"
     >
       <Toolbar>
