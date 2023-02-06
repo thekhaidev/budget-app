@@ -10,6 +10,7 @@ import {
   Switch,
 
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const Topbar = ({
@@ -20,6 +21,7 @@ const Topbar = ({
 }) => {
   const todayDate = new Date().toLocaleDateString('en-US');
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
 
   const regularStyle = {
     flexGrow: 1,
@@ -91,7 +93,7 @@ const Topbar = ({
             sx={{
               justifyContent: 'center',
             }}
-            onClick={handleClose}
+            onClick={() => navigate('/profile')}
           >
             My account
 

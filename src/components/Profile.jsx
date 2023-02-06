@@ -5,6 +5,9 @@ import React, {
 import {
   Box,
   Typography,
+  Card,
+  Avatar,
+  Button,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
@@ -73,18 +76,80 @@ const Profile = ({
           </Typography>
         </Box>
 
-        {/* <Sidebar
-          currentlySelected={currentlySelected}
-          select={setCurrentlySelected}
-          setUserData={setUserData}
-          accountNames={accountNames}
-          transactions={transactions}
-          entryAccountNames={entryAccountNames}
-          defaultSelect={defaultSelect}
-        /> */}
+        <Card
+          elevation={3}
+          sx={{
+            height: '50vh',
+            width: '50%',
+            border: '1px solid orange',
+            ml: 35,
+            mb: 3,
+          }}
+        >
+          <Avatar
+            sx={{
+              height: 100,
+              width: 100,
+              mx: 'auto',
+              mt: 3,
+              mb: 1,
+            }}
+          >
+            U
 
-        {/* <Button variant="outlined" onClick={() => console.log(userData)}>Data</Button> */}
+          </Avatar>
+          <Box
+            variant="span"
+            sx={{
+              mb: 2,
+            }}
+          >
+            <Typography
+              variant="body2"
+            >
+              Change Profile Picture
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              mb: 2,
+            }}
+          >
+            <Typography>
+              Name: User One
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              mb: 2,
+            }}
+          >
+            <Typography>
+              Address: 123 Niceplace Way
+              Atlanta, GA
+              00001
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              mb: 2,
+            }}
+          >
+            <Typography>
+              Email: test@test.com
+            </Typography>
+          </Box>
+          <Button>
+            Edit
+          </Button>
+        </Card>
+
       </Box>
+      <Button
+        onClick={() => navigate('/home')}
+      >
+        Exit
+      </Button>
     </Box>
   );
 };
